@@ -1,3 +1,3 @@
-import handler from '../dist/server/server.js'
+import serverHandler from '../dist/server/server.js'
 
-export default handler
+export default serverHandler
