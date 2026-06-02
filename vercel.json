@@ -1,0 +1,11 @@
+{
+  "installCommand": "bun install",
+  "buildCommand": "bunx --bun prisma generate && bun run build",
+  "outputDirectory": "dist/client",
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/api"
+    }
+  ]
+}
