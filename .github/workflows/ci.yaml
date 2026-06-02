@@ -31,7 +31,13 @@ jobs:
           bun run lint
           echo "ESLint checked successfully"
 
+      - name: Build Prisma
+        run: bunx --bun prisma generate
+        env:
+          DATABASE_URL: 'postgresql://fake:fake@localhost:5432/fake'
       - name: Build
         run: |
           bun run build
           echo "Building successfully"
+        env:
+            DATABASE_URL: ${{ secrets.DATABASE_URL }}
