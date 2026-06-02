@@ -8,7 +8,10 @@ export const createIncidentSchema = z.object({
   time: z.string().min(1, 'Time is required'),
   description: z.string().min(5, 'Description must be at least 5 characters'),
   officers: z.number().int().nonnegative('Officers must be non-negative'),
-  peopleAffected: z.number().int().nonnegative('People affected must be non-negative'),
+  peopleAffected: z
+    .number()
+    .int()
+    .nonnegative('People affected must be non-negative'),
   latitude: z.number().min(-90).max(90, 'Invalid latitude'),
   longitude: z.number().min(-180).max(180, 'Invalid longitude'),
 })

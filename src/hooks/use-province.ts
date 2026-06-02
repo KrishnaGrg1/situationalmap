@@ -22,7 +22,8 @@ export function useCreateProvince() {
   const queryClient = useQueryClient()
 
   return useMutation({
-    mutationFn: (data: Parameters<typeof createProvince>[0]) => createProvince(data),
+    mutationFn: (data: Parameters<typeof createProvince>[0]) =>
+      createProvince(data),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['provinces'] })
       toast.success('Province created successfully')
@@ -37,7 +38,8 @@ export function useUpdateProvince() {
   const queryClient = useQueryClient()
 
   return useMutation({
-    mutationFn: (data: Parameters<typeof updateProvince>[0]) => updateProvince(data),
+    mutationFn: (data: Parameters<typeof updateProvince>[0]) =>
+      updateProvince(data),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['provinces'] })
       toast.success('Province updated successfully')

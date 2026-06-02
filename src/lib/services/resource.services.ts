@@ -7,16 +7,18 @@ import {
   releaseResourceSchema,
 } from '../schema/resource.schema'
 
-export const getResources = createServerFn({ method: 'GET' }).handler(async () => {
-  return await prisma.resource.findMany({
-    orderBy: {
-      createdAt: 'desc',
-    },
-    include: {
-      incident: true,
-    },
-  })
-})
+export const getResources = createServerFn({ method: 'GET' }).handler(
+  async () => {
+    return await prisma.resource.findMany({
+      orderBy: {
+        createdAt: 'desc',
+      },
+      include: {
+        incident: true,
+      },
+    })
+  },
+)
 
 export const createResource = createServerFn({ method: 'POST' })
   .inputValidator((data: unknown) => createResourceSchema.parse(data))

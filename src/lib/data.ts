@@ -1,45 +1,54 @@
-export type IncidentSeverity = 'critical' | 'high' | 'medium' | 'low';
-export type IncidentCategory = 'disaster' | 'protest' | 'traffic' | 'crime' | 'medical';
-export type ResourceStatus = 'deployed' | 'standby' | 'available' | 'unavailable';
+export type IncidentSeverity = 'critical' | 'high' | 'medium' | 'low'
+export type IncidentCategory =
+  | 'disaster'
+  | 'protest'
+  | 'traffic'
+  | 'crime'
+  | 'medical'
+export type ResourceStatus =
+  | 'deployed'
+  | 'standby'
+  | 'available'
+  | 'unavailable'
 
 export interface IncidentUpdate {
-  user: string;
-  text: string;
-  time: string;
+  user: string
+  text: string
+  time: string
 }
 
 export interface Incident {
-  id: number;
-  title: string;
-  severity: IncidentSeverity;
-  category: IncidentCategory;
-  district: string;
-  time: string;
-  desc: string;
-  officers: number;
-  peopleAffected: number;
+  id: number
+  title: string
+  severity: IncidentSeverity
+  category: IncidentCategory
+  district: string
+  time: string
+  desc: string
+  officers: number
+  peopleAffected: number
   coordinates: {
-    lat: number;
-    lng: number;
-  };
-  updates: IncidentUpdate[];
-  status: 'active' | 'monitoring' | 'resolved';
+    lat: number
+    lng: number
+  }
+  updates: IncidentUpdate[]
+  status: 'active' | 'monitoring' | 'resolved'
 }
 
 export interface Resource {
-  id: number;
-  name: string;
-  type: 'unit' | 'vehicle' | 'personnel';
-  officers: number;
-  vehicle: string;
-  status: ResourceStatus;
-  assignedTo?: number;
+  id: number
+  name: string
+  type: 'unit' | 'vehicle' | 'personnel'
+  officers: number
+  vehicle: string
+  status: ResourceStatus
+  assignedTo?: number
 }
 
 export interface Province {
-  name: string;
-  status: 'active' | 'monitoring' | 'normal';
-  count: number;
+  name: string
+  status: 'active' | 'monitoring' | 'normal'
+  count: number
 }
 
 export const incidents: Incident[] = [
@@ -56,10 +65,22 @@ export const incidents: Incident[] = [
     coordinates: { lat: 28.35, lng: 81.25 },
     status: 'active',
     updates: [
-      { user: 'SSP', text: '2 rescue boats dispatched. Army coordination requested.', time: '13:45' },
-      { user: 'ASI', text: 'Families shifted to Rajapur school shelter.', time: '13:22' },
-      { user: 'SI', text: 'Road blocked at km 12. Alternative route via Gularia.', time: '12:35' }
-    ]
+      {
+        user: 'SSP',
+        text: '2 rescue boats dispatched. Army coordination requested.',
+        time: '13:45',
+      },
+      {
+        user: 'ASI',
+        text: 'Families shifted to Rajapur school shelter.',
+        time: '13:22',
+      },
+      {
+        user: 'SI',
+        text: 'Road blocked at km 12. Alternative route via Gularia.',
+        time: '12:35',
+      },
+    ],
   },
   {
     id: 2,
@@ -74,9 +95,17 @@ export const incidents: Incident[] = [
     coordinates: { lat: 28.21, lng: 83.99 },
     status: 'active',
     updates: [
-      { user: 'DSP', text: 'Evacuation order issued for Ghachok and Mardi areas.', time: '12:10' },
-      { user: 'SI', text: 'Monitoring team deployed at slide-prone zone.', time: '11:55' }
-    ]
+      {
+        user: 'DSP',
+        text: 'Evacuation order issued for Ghachok and Mardi areas.',
+        time: '12:10',
+      },
+      {
+        user: 'SI',
+        text: 'Monitoring team deployed at slide-prone zone.',
+        time: '11:55',
+      },
+    ],
   },
   {
     id: 3,
@@ -88,12 +117,20 @@ export const incidents: Incident[] = [
     desc: 'Anti-corruption protest at Ratnapark. Approx. 500 participants. Situation calm but monitoring required.',
     officers: 12,
     peopleAffected: 500,
-    coordinates: { lat: 27.70, lng: 85.32 },
+    coordinates: { lat: 27.7, lng: 85.32 },
     status: 'monitoring',
     updates: [
-      { user: 'DIG', text: 'Protesters agreed to disperse by 16:00. No arrests.', time: '14:10' },
-      { user: 'DSP', text: 'Perimeter secured. Crowd cooperative.', time: '11:20' }
-    ]
+      {
+        user: 'DIG',
+        text: 'Protesters agreed to disperse by 16:00. No arrests.',
+        time: '14:10',
+      },
+      {
+        user: 'DSP',
+        text: 'Perimeter secured. Crowd cooperative.',
+        time: '11:20',
+      },
+    ],
   },
   {
     id: 4,
@@ -108,8 +145,12 @@ export const incidents: Incident[] = [
     coordinates: { lat: 27.95, lng: 84.42 },
     status: 'active',
     updates: [
-      { user: 'SI', text: 'Ambulance on scene. Lane partially cleared.', time: '10:40' }
-    ]
+      {
+        user: 'SI',
+        text: 'Ambulance on scene. Lane partially cleared.',
+        time: '10:40',
+      },
+    ],
   },
   {
     id: 5,
@@ -124,8 +165,8 @@ export const incidents: Incident[] = [
     coordinates: { lat: 27.01, lng: 84.87 },
     status: 'monitoring',
     updates: [
-      { user: 'ASI', text: 'Tow truck dispatched, ETA 30 min.', time: '09:05' }
-    ]
+      { user: 'ASI', text: 'Tow truck dispatched, ETA 30 min.', time: '09:05' },
+    ],
   },
   {
     id: 6,
@@ -137,11 +178,15 @@ export const incidents: Incident[] = [
     desc: 'Market closure protest by traders. ~200 people gathered. No violence reported.',
     officers: 4,
     peopleAffected: 200,
-    coordinates: { lat: 27.70, lng: 83.45 },
+    coordinates: { lat: 27.7, lng: 83.45 },
     status: 'monitoring',
     updates: [
-      { user: 'SI', text: 'Meeting with ward chairman arranged.', time: '13:45' }
-    ]
+      {
+        user: 'SI',
+        text: 'Meeting with ward chairman arranged.',
+        time: '13:45',
+      },
+    ],
   },
   {
     id: 7,
@@ -156,10 +201,14 @@ export const incidents: Incident[] = [
     coordinates: { lat: 27.51, lng: 83.45 },
     status: 'active',
     updates: [
-      { user: 'DSP', text: 'Fire brigade en route. Area cordoned.', time: '14:08' }
-    ]
-  }
-];
+      {
+        user: 'DSP',
+        text: 'Fire brigade en route. Area cordoned.',
+        time: '14:08',
+      },
+    ],
+  },
+]
 
 export const resources: Resource[] = [
   {
@@ -169,7 +218,7 @@ export const resources: Resource[] = [
     officers: 8,
     vehicle: '2x Jeep, 1x Rescue Boat',
     status: 'deployed',
-    assignedTo: 1
+    assignedTo: 1,
   },
   {
     id: 2,
@@ -178,7 +227,7 @@ export const resources: Resource[] = [
     officers: 6,
     vehicle: '2x Jeep, 1x Ambulance',
     status: 'deployed',
-    assignedTo: 2
+    assignedTo: 2,
   },
   {
     id: 3,
@@ -187,7 +236,7 @@ export const resources: Resource[] = [
     officers: 12,
     vehicle: '4x Jeep, Riot gear',
     status: 'standby',
-    assignedTo: 3
+    assignedTo: 3,
   },
   {
     id: 4,
@@ -196,7 +245,7 @@ export const resources: Resource[] = [
     officers: 5,
     vehicle: '2x Patrol Car',
     status: 'deployed',
-    assignedTo: 4
+    assignedTo: 4,
   },
   {
     id: 5,
@@ -204,26 +253,58 @@ export const resources: Resource[] = [
     type: 'unit',
     officers: 11,
     vehicle: '3x Jeep, 1x Van',
-    status: 'available'
-  }
-];
+    status: 'available',
+  },
+]
 
 export const nepaliSummaries = [
   'वर्तमान अवस्था: बर्दियामा बाढीका कारण ३ परिवार विस्थापित भएका छन्। कास्कीमा पहिरोको खतरा उच्च छ। काठमाडौंमा प्रदर्शन नियन्त्रणमा छ। कुल ७ सक्रिय घटनाहरू अनुगमनमा छन्।',
   'अपडेट: भैरहवामा गोदाम आगलागी भएको छ — दमकल सूचित गरिएको छ। बर्दियामा थप उद्धार डुङ्गाहरू पठाइएका छन्। बुटवलमा व्यापारीहरूको विरोध शान्तिपूर्ण रूपमा जारी छ।',
-  'प्राथमिकता: बर्दिया र कास्कीलाई तत्काल स्रोत आवश्यक छ। काठमाडौं प्रदर्शन बिहान ४ बजेसम्म समाप्त हुने अपेक्षा छ। समग्र स्थिति नियन्त्रणमा।'
-];
+  'प्राथमिकता: बर्दिया र कास्कीलाई तत्काल स्रोत आवश्यक छ। काठमाडौं प्रदर्शन बिहान ४ बजेसम्म समाप्त हुने अपेक्षा छ। समग्र स्थिति नियन्त्रणमा।',
+]
 
 export const timeline = [
-  { time: '14:08', text: 'Fire reported in Bhairahawa warehouse — Fire brigade alerted', severity: 'critical' },
-  { time: '14:01', text: 'New incident logged: Bhairahawa industrial fire', severity: 'high' },
-  { time: '13:45', text: 'Rescue boats dispatched to Bardiya flood zone', severity: 'critical' },
-  { time: '13:22', text: 'Displaced families shifted to Rajapur school shelter', severity: 'low' },
-  { time: '13:05', text: 'Crowd monitoring started: Butwal market protest', severity: 'high' },
-  { time: '12:10', text: 'Evacuation order: Ghachok and Mardi areas (Kaski)', severity: 'critical' },
-  { time: '11:45', text: 'Landslide risk elevated to CRITICAL in Kaski', severity: 'critical' },
-  { time: '10:30', text: 'Protest logged: Ratnapark, ~500 participants', severity: 'high' }
-];
+  {
+    time: '14:08',
+    text: 'Fire reported in Bhairahawa warehouse — Fire brigade alerted',
+    severity: 'critical',
+  },
+  {
+    time: '14:01',
+    text: 'New incident logged: Bhairahawa industrial fire',
+    severity: 'high',
+  },
+  {
+    time: '13:45',
+    text: 'Rescue boats dispatched to Bardiya flood zone',
+    severity: 'critical',
+  },
+  {
+    time: '13:22',
+    text: 'Displaced families shifted to Rajapur school shelter',
+    severity: 'low',
+  },
+  {
+    time: '13:05',
+    text: 'Crowd monitoring started: Butwal market protest',
+    severity: 'high',
+  },
+  {
+    time: '12:10',
+    text: 'Evacuation order: Ghachok and Mardi areas (Kaski)',
+    severity: 'critical',
+  },
+  {
+    time: '11:45',
+    text: 'Landslide risk elevated to CRITICAL in Kaski',
+    severity: 'critical',
+  },
+  {
+    time: '10:30',
+    text: 'Protest logged: Ratnapark, ~500 participants',
+    severity: 'high',
+  },
+]
 
 export const provinces: Province[] = [
   { name: 'Bagmati', status: 'active', count: 2 },
@@ -232,5 +313,5 @@ export const provinces: Province[] = [
   { name: 'Madhesh', status: 'monitoring', count: 1 },
   { name: 'Koshi', status: 'normal', count: 0 },
   { name: 'Karnali', status: 'normal', count: 0 },
-  { name: 'Sudurpashchim', status: 'normal', count: 0 }
-];
+  { name: 'Sudurpashchim', status: 'normal', count: 0 },
+]

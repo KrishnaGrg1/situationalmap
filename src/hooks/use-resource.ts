@@ -24,7 +24,8 @@ export function useCreateResource() {
   const queryClient = useQueryClient()
 
   return useMutation({
-    mutationFn: (data: Parameters<typeof createResource>[0]) => createResource(data),
+    mutationFn: (data: Parameters<typeof createResource>[0]) =>
+      createResource(data),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['resources'] })
       toast.success('Resource created successfully')
@@ -39,7 +40,8 @@ export function useUpdateResource() {
   const queryClient = useQueryClient()
 
   return useMutation({
-    mutationFn: (data: Parameters<typeof updateResource>[0]) => updateResource(data),
+    mutationFn: (data: Parameters<typeof updateResource>[0]) =>
+      updateResource(data),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['resources'] })
       queryClient.invalidateQueries({ queryKey: ['incidents'] })
@@ -73,7 +75,8 @@ export function useReleaseResource(incidentId?: number) {
   const queryClient = useQueryClient()
 
   return useMutation({
-    mutationFn: (data: Parameters<typeof releaseResource>[0]) => releaseResource(data),
+    mutationFn: (data: Parameters<typeof releaseResource>[0]) =>
+      releaseResource(data),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['resources'] })
 

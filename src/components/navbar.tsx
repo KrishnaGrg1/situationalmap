@@ -1,31 +1,31 @@
-import { useState, useEffect } from 'react';
-import { Plus, Bell } from 'lucide-react';
-import { Button } from './ui/button';
-import { Logo } from './logo';
+import { useState, useEffect } from 'react'
+import { Plus, Bell } from 'lucide-react'
+import { Button } from './ui/button'
+import { Logo } from './logo'
 
 interface NavbarProps {
-  onOpenReportForm: () => void;
+  onOpenReportForm: () => void
 }
 
 export function Navbar({ onOpenReportForm }: NavbarProps) {
-  const [currentTime, setCurrentTime] = useState('');
+  const [currentTime, setCurrentTime] = useState('')
 
   useEffect(() => {
     const updateClock = () => {
-      const now = new Date();
+      const now = new Date()
       const time = now.toLocaleTimeString('en-US', {
         hour12: false,
         hour: '2-digit',
         minute: '2-digit',
-        second: '2-digit'
-      });
-      setCurrentTime(`${time} NPT`);
-    };
+        second: '2-digit',
+      })
+      setCurrentTime(`${time} NPT`)
+    }
 
-    updateClock();
-    const interval = setInterval(updateClock, 1000);
-    return () => clearInterval(interval);
-  }, []);
+    updateClock()
+    const interval = setInterval(updateClock, 1000)
+    return () => clearInterval(interval)
+  }, [])
 
   return (
     <nav className="flex items-center justify-between px-5 h-14 border-b sticky top-0 z-50 bg-background">
@@ -56,5 +56,5 @@ export function Navbar({ onOpenReportForm }: NavbarProps) {
         </Button>
       </div>
     </nav>
-  );
+  )
 }

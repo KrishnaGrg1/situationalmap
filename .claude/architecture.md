@@ -119,16 +119,16 @@ Create one reusable Prisma client instance.
 ### File: `src/lib/prisma.ts`
 
 ```typescript
-import { PrismaPg } from "@prisma/adapter-pg";
-import { PrismaClient } from "../generated/prisma/client";
+import { PrismaPg } from '@prisma/adapter-pg'
+import { PrismaClient } from '../generated/prisma/client'
 
 const adapter = new PrismaPg({
   connectionString: process.env.DATABASE_URL!,
-});
+})
 
 export const prisma = new PrismaClient({
   adapter,
-});
+})
 ```
 
 ### Why This File Is Needed
@@ -369,7 +369,9 @@ export const createResourceSchema = z.object({
   type: z.enum(['UNIT', 'VEHICLE', 'PERSONNEL']),
   officers: z.number().int().nonnegative(),
   vehicle: z.string().min(1, 'Vehicle information is required'),
-  status: z.enum(['DEPLOYED', 'STANDBY', 'AVAILABLE', 'UNAVAILABLE']).optional(),
+  status: z
+    .enum(['DEPLOYED', 'STANDBY', 'AVAILABLE', 'UNAVAILABLE'])
+    .optional(),
   assignedTo: z.number().int().positive().nullable().optional(),
 })
 
@@ -435,8 +437,8 @@ import {
   getIncidentByIdSchema,
 } from '../schema/incident.schema'
 
-export const getIncidents = createServerFn({ method: 'GET' })
-  .handler(async () => {
+export const getIncidents = createServerFn({ method: 'GET' }).handler(
+  async () => {
     return await prisma.incident.findMany({
       orderBy: {
         createdAt: 'desc',
@@ -446,7 +448,8 @@ export const getIncidents = createServerFn({ method: 'GET' })
         resources: true,
       },
     })
-  })
+  },
+)
 
 export const getIncidentById = createServerFn({ method: 'GET' })
   .inputValidator((data) => getIncidentByIdSchema.parse(data))
@@ -553,8 +556,8 @@ import {
   releaseResourceSchema,
 } from '../schema/resource.schema'
 
-export const getResources = createServerFn({ method: 'GET' })
-  .handler(async () => {
+export const getResources = createServerFn({ method: 'GET' }).handler(
+  async () => {
     return await prisma.resource.findMany({
       orderBy: {
         createdAt: 'desc',
@@ -563,7 +566,8 @@ export const getResources = createServerFn({ method: 'GET' })
         incident: true,
       },
     })
-  })
+  },
+)
 
 export const createResource = createServerFn({ method: 'POST' })
   .inputValidator((data) => createResourceSchema.parse(data))
@@ -629,14 +633,15 @@ import {
   updateProvinceSchema,
 } from '../schema/province.schema'
 
-export const getProvinces = createServerFn({ method: 'GET' })
-  .handler(async () => {
+export const getProvinces = createServerFn({ method: 'GET' }).handler(
+  async () => {
     return await prisma.province.findMany({
       orderBy: {
         name: 'asc',
       },
     })
-  })
+  },
+)
 
 export const createProvince = createServerFn({ method: 'POST' })
   .inputValidator((data) => createProvinceSchema.parse(data))
@@ -668,12 +673,12 @@ Custom hooks wrap server functions with TanStack Query.
 
 This gives the app:
 
-* Loading state
-* Error state
-* Caching
-* Refetching
-* Mutation handling
-* Query invalidation
+- Loading state
+- Error state
+- Caching
+- Refetching
+- Mutation handling
+- Query invalidation
 
 ---
 
@@ -1033,7 +1038,9 @@ export function CreateIncidentForm() {
             <label>Severity</label>
             <select
               value={field.state.value}
-              onChange={(event) => field.handleChange(event.target.value as any)}
+              onChange={(event) =>
+                field.handleChange(event.target.value as any)
+              }
             >
               <option value="CRITICAL">Critical</option>
               <option value="HIGH">High</option>
@@ -1050,7 +1057,9 @@ export function CreateIncidentForm() {
             <label>Category</label>
             <select
               value={field.state.value}
-              onChange={(event) => field.handleChange(event.target.value as any)}
+              onChange={(event) =>
+                field.handleChange(event.target.value as any)
+              }
             >
               <option value="DISASTER">Disaster</option>
               <option value="PROTEST">Protest</option>
@@ -1087,8 +1096,7 @@ export function CreateIncidentForm() {
       <form.Field
         name="time"
         validators={{
-          onChange: ({ value }) =>
-            !value ? 'Time is required' : undefined,
+          onChange: ({ value }) => (!value ? 'Time is required' : undefined),
         }}
       >
         {(field) => (
@@ -1263,7 +1271,9 @@ export function CreateResourceForm() {
             <label>Type</label>
             <select
               value={field.state.value}
-              onChange={(event) => field.handleChange(event.target.value as any)}
+              onChange={(event) =>
+                field.handleChange(event.target.value as any)
+              }
             >
               <option value="UNIT">Unit</option>
               <option value="VEHICLE">Vehicle</option>
@@ -1379,16 +1389,16 @@ This keeps the province-level dashboard fresh.
 
 Use polling with `refetchInterval` when:
 
-* Updates every 10–30 seconds are enough
-* Dashboard does not need instant updates
-* Project needs simple implementation
+- Updates every 10–30 seconds are enough
+- Dashboard does not need instant updates
+- Project needs simple implementation
 
 Use WebSocket or SSE when:
 
-* Incident status must update instantly
-* Multiple users are collaborating live
-* Resource dispatch changes must appear immediately
-* Control room dashboard must be live
+- Incident status must update instantly
+- Multiple users are collaborating live
+- Resource dispatch changes must appear immediately
+- Control room dashboard must be live
 
 ---
 
@@ -1499,10 +1509,11 @@ function IncidentPage() {
 Good:
 
 ```typescript
-export const getIncidents = createServerFn({ method: 'GET' })
-  .handler(async () => {
+export const getIncidents = createServerFn({ method: 'GET' }).handler(
+  async () => {
     return await prisma.incident.findMany()
-  })
+  },
+)
 ```
 
 Bad:
@@ -1574,18 +1585,13 @@ This makes sure the UI shows fresh data after create, update, or delete.
 Good:
 
 ```typescript
-['incidents']
-['incident', id]
-['resources']
-['provinces']
+;['incidents'][('incident', id)]['resources']['provinces']
 ```
 
 Bad:
 
 ```typescript
-['incident-list']
-['allIncidents']
-['data']
+;['incident-list']['allIncidents']['data']
 ```
 
 Consistent query keys make cache invalidation easier.
@@ -1620,10 +1626,10 @@ Do not put database logic inside forms.
 
 Examples of business logic:
 
-* Assigning resource should set status to `DEPLOYED`
-* Releasing resource should set status to `AVAILABLE`
-* Resolving an incident may release resources
-* Province count may change when incidents change
+- Assigning resource should set status to `DEPLOYED`
+- Releasing resource should set status to `AVAILABLE`
+- Resolving an incident may release resources
+- Province count may change when incidents change
 
 This logic belongs in server functions, not components.
 

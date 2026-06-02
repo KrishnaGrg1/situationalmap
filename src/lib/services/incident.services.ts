@@ -7,21 +7,23 @@ import {
   getIncidentByIdSchema,
 } from '../schema/incident.schema'
 
-export const getIncidents = createServerFn({ method: 'GET' }).handler(async () => {
-  return await prisma.incident.findMany({
-    orderBy: {
-      createdAt: 'desc',
-    },
-    include: {
-      updates: {
-        orderBy: {
-          createdAt: 'desc',
-        },
+export const getIncidents = createServerFn({ method: 'GET' }).handler(
+  async () => {
+    return await prisma.incident.findMany({
+      orderBy: {
+        createdAt: 'desc',
       },
-      resources: true,
-    },
-  })
-})
+      include: {
+        updates: {
+          orderBy: {
+            createdAt: 'desc',
+          },
+        },
+        resources: true,
+      },
+    })
+  },
+)
 
 export const getIncidentById = createServerFn({ method: 'GET' })
   .inputValidator((data: unknown) => getIncidentByIdSchema.parse(data))

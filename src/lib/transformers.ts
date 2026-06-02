@@ -16,11 +16,12 @@ export function transformIncident(incident: any) {
       lat: incident.latitude,
       lng: incident.longitude,
     },
-    updates: incident.updates?.map((u: any) => ({
-      user: u.user,
-      text: u.text,
-      time: u.time,
-    })) || [],
+    updates:
+      incident.updates?.map((u: any) => ({
+        user: u.user,
+        text: u.text,
+        time: u.time,
+      })) || [],
     status: incident.status.toLowerCase(),
   }
 }

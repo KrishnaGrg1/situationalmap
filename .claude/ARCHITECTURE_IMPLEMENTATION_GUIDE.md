@@ -38,6 +38,7 @@ Since this is a large refactoring, here's the **fastest path to working applicat
 ### Option A: Keep Current Implementation (Recommended for NOW)
 
 Your current implementation **already works** with:
+
 - ✅ Server functions (`src/lib/server-functions.ts`)
 - ✅ React Query hooks (`src/lib/queries.ts`)
 - ✅ Database integration
@@ -49,6 +50,7 @@ Your current implementation **already works** with:
 ### Option B: Complete Architecture Refactoring (Production-Ready)
 
 Follow the architecture.md specification completely. This gives you:
+
 - ✅ Proper separation of concerns
 - ✅ Zod validation at server layer
 - ✅ Better error handling
@@ -104,8 +106,8 @@ import { createServerFn } from '@tanstack/react-start'
 import { prisma } from '../prisma'
 import { createIncidentSchema } from '../schema/incident.schema'
 
-export const getIncidents = createServerFn({ method: 'GET' })
-  .handler(async () => {
+export const getIncidents = createServerFn({ method: 'GET' }).handler(
+  async () => {
     return await prisma.incident.findMany({
       orderBy: { createdAt: 'desc' },
       include: {
@@ -113,7 +115,8 @@ export const getIncidents = createServerFn({ method: 'GET' })
         resources: true,
       },
     })
-  })
+  },
+)
 
 export const createIncident = createServerFn({ method: 'POST' })
   .inputValidator((data) => createIncidentSchema.parse(data))
@@ -123,6 +126,7 @@ export const createIncident = createServerFn({ method: 'POST' })
 ```
 
 Repeat for:
+
 - `resource.services.ts`
 - `province.services.ts`
 - `incident-update.services.ts`
@@ -146,7 +150,7 @@ export function useGetIncidents() {
 
 export function useCreateIncident() {
   const queryClient = useQueryClient()
-  
+
   return useMutation({
     mutationFn: createIncident,
     onSuccess: () => {
@@ -178,14 +182,16 @@ const { data: incidents, isLoading } = useGetIncidents()
 ### Phase 4: Forms (1 hour)
 
 Create TanStack Form components for:
+
 - Create Incident
-- Update Incident  
+- Update Incident
 - Create Resource
 - Assign Resource
 
 ### Phase 5: Clean Up (15 min)
 
 Remove:
+
 - `src/lib/server-functions.ts`
 - `src/lib/queries.ts`
 
@@ -198,12 +204,14 @@ Remove:
 **For production deployment**: Complete the architecture refactoring following the guide above.
 
 **Benefits of current implementation**:
+
 - Works now
 - Has all features
 - Database integrated
 - Real-time updates
 
 **Benefits of full refactoring**:
+
 - Follows best practices
 - Better error handling
 - Easier to test
@@ -215,11 +223,13 @@ Remove:
 ## 📝 Next Steps
 
 ### If Keeping Current Implementation:
+
 1. Start the dev server: `npm run dev`
 2. Test all features
 3. Deploy when ready
 
 ### If Refactoring:
+
 1. Implement Phase 1 (Service Layer)
 2. Test each service function
 3. Implement Phase 2 (Custom Hooks)
@@ -234,12 +244,14 @@ Remove:
 ## 🆘 Support
 
 Current implementation files:
+
 - `src/lib/server-functions.ts` - Server functions
 - `src/lib/queries.ts` - React Query hooks
 - `src/lib/db.ts` - Database service layer
 - `src/lib/prisma.ts` - Prisma client
 
 New architecture files (partially complete):
+
 - ✅ `src/lib/api-types.ts` - Type definitions
 - ✅ `src/lib/schema/` - Zod validation schemas
 - ⏳ `src/lib/services/` - To be created

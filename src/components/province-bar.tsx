@@ -1,7 +1,7 @@
-import { useGetProvinces } from '#/hooks/use-province';
+import { useGetProvinces } from '#/hooks/use-province'
 
 export function ProvinceBar() {
-  const { data: provinces, isLoading } = useGetProvinces();
+  const { data: provinces, isLoading } = useGetProvinces()
 
   if (isLoading || !provinces) {
     return (
@@ -10,7 +10,7 @@ export function ProvinceBar() {
           Loading provinces...
         </div>
       </div>
-    );
+    )
   }
 
   return (
@@ -56,5 +56,5 @@ export function ProvinceBar() {
         </div>
       ))}
     </div>
-  );
+  )
 }

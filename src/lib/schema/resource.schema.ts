@@ -5,7 +5,9 @@ export const createResourceSchema = z.object({
   type: z.enum(['UNIT', 'VEHICLE', 'PERSONNEL']),
   officers: z.number().int().nonnegative('Officers must be non-negative'),
   vehicle: z.string().min(1, 'Vehicle information is required'),
-  status: z.enum(['DEPLOYED', 'STANDBY', 'AVAILABLE', 'UNAVAILABLE']).optional(),
+  status: z
+    .enum(['DEPLOYED', 'STANDBY', 'AVAILABLE', 'UNAVAILABLE'])
+    .optional(),
   assignedTo: z.number().int().positive().nullable().optional(),
 })
 

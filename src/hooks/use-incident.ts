@@ -33,7 +33,8 @@ export function useCreateIncident() {
   const queryClient = useQueryClient()
 
   return useMutation({
-    mutationFn: (data: Parameters<typeof createIncident>[0]) => createIncident(data),
+    mutationFn: (data: Parameters<typeof createIncident>[0]) =>
+      createIncident(data),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['incidents'] })
       queryClient.invalidateQueries({ queryKey: ['provinces'] })
@@ -49,7 +50,8 @@ export function useUpdateIncident() {
   const queryClient = useQueryClient()
 
   return useMutation({
-    mutationFn: (data: Parameters<typeof updateIncident>[0]) => updateIncident(data),
+    mutationFn: (data: Parameters<typeof updateIncident>[0]) =>
+      updateIncident(data),
     onSuccess: (data) => {
       queryClient.invalidateQueries({ queryKey: ['incidents'] })
       queryClient.invalidateQueries({ queryKey: ['incident', data.id] })
@@ -65,7 +67,8 @@ export function useDeleteIncident() {
   const queryClient = useQueryClient()
 
   return useMutation({
-    mutationFn: (data: Parameters<typeof deleteIncident>[0]) => deleteIncident(data),
+    mutationFn: (data: Parameters<typeof deleteIncident>[0]) =>
+      deleteIncident(data),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['incidents'] })
       queryClient.invalidateQueries({ queryKey: ['resources'] })

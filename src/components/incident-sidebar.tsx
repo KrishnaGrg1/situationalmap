@@ -1,23 +1,23 @@
-import { Plus } from 'lucide-react';
-import { Card, CardContent } from './ui/card';
-import { Button } from './ui/button';
-import { useGetIncidents } from '#/hooks/use-incident';
-import { cn } from '#/lib/utils';
+import { Plus } from 'lucide-react'
+import { Card, CardContent } from './ui/card'
+import { Button } from './ui/button'
+import { useGetIncidents } from '#/hooks/use-incident'
+import { cn } from '#/lib/utils'
 
 const useIncidentStats = (incidents: any[] | undefined) => {
-  if (!incidents) return null;
+  if (!incidents) return null
   return {
     critical: incidents.filter((i) => i.severity === 'critical').length,
     high: incidents.filter((i) => i.severity === 'high').length,
     medium: incidents.filter((i) => i.severity === 'medium').length,
     low: incidents.filter((i) => i.severity === 'low').length,
     resolved: incidents.filter((i) => i.status === 'resolved').length,
-  };
-};
+  }
+}
 
 interface IncidentSidebarProps {
-  selectedIncident: number | null;
-  onSelectIncident: (id: number) => void;
+  selectedIncident: number | null
+  onSelectIncident: (id: number) => void
 }
 
 const getSeverityColor = (severity: string) => {
@@ -26,9 +26,9 @@ const getSeverityColor = (severity: string) => {
     high: 'bg-orange-500',
     medium: 'bg-blue-500',
     low: 'bg-green-500',
-  };
-  return colors[severity as keyof typeof colors] || 'bg-muted-foreground';
-};
+  }
+  return colors[severity as keyof typeof colors] || 'bg-muted-foreground'
+}
 
 const getCategoryBadge = (category: string) => {
   const badges = {
@@ -37,23 +37,28 @@ const getCategoryBadge = (category: string) => {
     traffic: 'bg-blue-500/10 text-blue-500 border-blue-500/20',
     crime: 'bg-purple-500/10 text-purple-500 border-purple-500/20',
     medical: 'bg-green-500/10 text-green-500 border-green-500/20',
-  };
-  return badges[category as keyof typeof badges] || 'bg-muted text-muted-foreground';
-};
+  }
+  return (
+    badges[category as keyof typeof badges] || 'bg-muted text-muted-foreground'
+  )
+}
 
-export function IncidentSidebar({ selectedIncident, onSelectIncident }: IncidentSidebarProps) {
-  const { data: incidents, isLoading } = useGetIncidents();
-  const stats = useIncidentStats(incidents);
+export function IncidentSidebar({
+  selectedIncident,
+  onSelectIncident,
+}: IncidentSidebarProps) {
+  const { data: incidents, isLoading } = useGetIncidents()
+  const stats = useIncidentStats(incidents)
 
   if (isLoading || !incidents || !stats) {
     return (
       <div className="w-[280px] min-w-[280px] border-r flex items-center justify-center">
         <div className="text-muted-foreground text-sm">Loading...</div>
       </div>
-    );
+    )
   }
 
-  const activeCount = incidents.filter((i) => i.status === 'active').length;
+  const activeCount = incidents.filter((i) => i.status === 'active').length
 
   return (
     <div className="w-[280px] min-w-[280px] border-r overflow-y-auto bg-background">
@@ -118,14 +123,16 @@ export function IncidentSidebar({ selectedIncident, onSelectIncident }: Incident
             onClick={() => onSelectIncident(incident.id)}
             className={cn(
               'flex items-start gap-2.5 px-4 py-2.5 border-b cursor-pointer transition-colors hover:bg-accent',
-              selectedIncident === incident.id && 'bg-accent border-l-2 border-l-primary'
+              selectedIncident === incident.id &&
+                'bg-accent border-l-2 border-l-primary',
             )}
           >
             <span
               className={cn(
                 'size-2 rounded-full mt-1 flex-shrink-0',
                 getSeverityColor(incident.severity),
-                incident.severity === 'critical' && 'shadow-lg shadow-red-500/50'
+                incident.severity === 'critical' &&
+                  'shadow-lg shadow-red-500/50',
               )}
             />
 
@@ -134,7 +141,12 @@ export function IncidentSidebar({ selectedIncident, onSelectIncident }: Incident
                 {incident.title}
               </div>
               <div className="flex gap-2 items-center mt-1 text-xs text-muted-foreground">
-                <span className={cn('text-xs px-1.5 py-0.5 rounded border font-medium', getCategoryBadge(incident.category))}>
+                <span
+                  className={cn(
+                    'text-xs px-1.5 py-0.5 rounded border font-medium',
+                    getCategoryBadge(incident.category),
+                  )}
+                >
                   {incident.category.toUpperCase()}
                 </span>
                 <span className="font-mono">{incident.time}</span>
@@ -145,5 +157,5 @@ export function IncidentSidebar({ selectedIncident, onSelectIncident }: Incident
         ))}
       </div>
     </div>
-  );
+  )
 }

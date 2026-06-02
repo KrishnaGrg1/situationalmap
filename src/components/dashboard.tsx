@@ -1,19 +1,20 @@
-import { useState } from 'react';
-import { Map, AlertTriangle, FileText, Users } from 'lucide-react';
-import { Navbar } from './navbar';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from './ui/tabs';
-import { OperationalMap } from './operational-map';
-import { IncidentsTab } from './incidents-tab';
-import { ReportTab } from './report-tab';
-import { ResourcesTab } from './resources-tab';
-import { useGetIncidents } from '#/hooks/use-incident';
+import { useState } from 'react'
+import { Map, AlertTriangle, FileText, Users } from 'lucide-react'
+import { Navbar } from './navbar'
+import { Tabs, TabsContent, TabsList, TabsTrigger } from './ui/tabs'
+import { OperationalMap } from './operational-map'
+import { IncidentsTab } from './incidents-tab'
+import { ReportTab } from './report-tab'
+import { ResourcesTab } from './resources-tab'
+import { useGetIncidents } from '#/hooks/use-incident'
 
 export function Dashboard() {
-  const [selectedIncident, setSelectedIncident] = useState<number | null>(null);
-  const [showReportForm, setShowReportForm] = useState(false);
-  const { data: incidents } = useGetIncidents();
+  const [selectedIncident, setSelectedIncident] = useState<number | null>(null)
+  const [showReportForm, setShowReportForm] = useState(false)
+  const { data: incidents } = useGetIncidents()
 
-  const activeIncidentsCount = incidents?.filter((i) => i.status === 'active').length || 0;
+  const activeIncidentsCount =
+    incidents?.filter((i) => i.status === 'active').length || 0
 
   return (
     <div className="min-h-screen bg-background">
@@ -64,5 +65,5 @@ export function Dashboard() {
         </TabsContent>
       </Tabs>
     </div>
-  );
+  )
 }

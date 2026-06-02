@@ -1,11 +1,17 @@
-import { useState } from 'react';
-import { Sparkles, Check, Loader2 } from 'lucide-react';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card';
-import { Button } from './ui/button';
-import { useGetIncidents } from '#/hooks/use-incident';
-import { useGetResources } from '#/hooks/use-resource';
-import { timeline } from '#/lib/data';
-import { cn } from '#/lib/utils';
+import { useState } from 'react'
+import { Sparkles, Check, Loader2 } from 'lucide-react'
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from './ui/card'
+import { Button } from './ui/button'
+import { useGetIncidents } from '#/hooks/use-incident'
+import { useGetResources } from '#/hooks/use-resource'
+import { timeline } from '#/lib/data'
+import { cn } from '#/lib/utils'
 
 const getSeverityColor = (severity: string) => {
   const colors = {
@@ -13,29 +19,30 @@ const getSeverityColor = (severity: string) => {
     high: 'bg-orange-500',
     medium: 'bg-blue-500',
     low: 'bg-green-500',
-  };
-  return colors[severity as keyof typeof colors] || 'bg-muted-foreground';
-};
+  }
+  return colors[severity as keyof typeof colors] || 'bg-muted-foreground'
+}
 
 export function ReportTab() {
-  const { data: incidents } = useGetIncidents();
-  const { data: resources } = useGetResources();
-  const [isGenerating, setIsGenerating] = useState(false);
-  const [isGenerated, setIsGenerated] = useState(false);
+  const { data: incidents } = useGetIncidents()
+  const { data: resources } = useGetResources()
+  const [isGenerating, setIsGenerating] = useState(false)
+  const [isGenerated, setIsGenerated] = useState(false)
 
   const handleGenerate = () => {
-    setIsGenerating(true);
+    setIsGenerating(true)
     setTimeout(() => {
-      setIsGenerating(false);
-      setIsGenerated(true);
+      setIsGenerating(false)
+      setIsGenerated(true)
       setTimeout(() => {
-        setIsGenerated(false);
-      }, 2000);
-    }, 1800);
-  };
+        setIsGenerated(false)
+      }, 2000)
+    }, 1800)
+  }
 
-  const totalOfficers = resources?.reduce((sum, r) => sum + r.officers, 0) || 0;
-  const activeIncidentsCount = incidents?.filter((i) => i.status === 'active').length || 0;
+  const totalOfficers = resources?.reduce((sum, r) => sum + r.officers, 0) || 0
+  const activeIncidentsCount =
+    incidents?.filter((i) => i.status === 'active').length || 0
 
   return (
     <div className="py-5 px-4 max-w-[800px] mx-auto space-y-3">
@@ -77,19 +84,32 @@ export function ReportTab() {
               </div>
               <div className="text-sm space-y-1">
                 <div>
-                  Date: <strong className="text-orange-500">{new Date().toLocaleDateString()}</strong>
+                  Date:{' '}
+                  <strong className="text-orange-500">
+                    {new Date().toLocaleDateString()}
+                  </strong>
                 </div>
                 <div>
-                  Time: <strong className="text-orange-500">{new Date().toLocaleTimeString()}</strong>
+                  Time:{' '}
+                  <strong className="text-orange-500">
+                    {new Date().toLocaleTimeString()}
+                  </strong>
                 </div>
                 <div>
-                  Active Incidents: <strong className="text-red-500">{activeIncidentsCount}</strong>
+                  Active Incidents:{' '}
+                  <strong className="text-red-500">
+                    {activeIncidentsCount}
+                  </strong>
                 </div>
                 <div>
-                  Total Personnel: <strong className="text-blue-500">{totalOfficers} officers</strong>
+                  Total Personnel:{' '}
+                  <strong className="text-blue-500">
+                    {totalOfficers} officers
+                  </strong>
                 </div>
                 <div>
-                  Priority Areas: <strong className="text-red-500">Bardiya, Kathmandu</strong>
+                  Priority Areas:{' '}
+                  <strong className="text-red-500">Bardiya, Kathmandu</strong>
                 </div>
               </div>
             </div>
@@ -99,8 +119,9 @@ export function ReportTab() {
                 Command Notes
               </div>
               <div className="text-sm leading-relaxed">
-                Bardiya flood situation deteriorating. Additional 2 rescue boats dispatched at
-                13:45. Kaski landslide risk remains HIGH. KTM protest dispersed peacefully.
+                Bardiya flood situation deteriorating. Additional 2 rescue boats
+                dispatched at 13:45. Kaski landslide risk remains HIGH. KTM
+                protest dispersed peacefully.
               </div>
             </div>
           </div>
@@ -124,7 +145,7 @@ export function ReportTab() {
                 <div
                   className={cn(
                     'size-3 rounded-full mt-0.5 flex-shrink-0 border-2 border-background relative z-10',
-                    getSeverityColor(item.severity)
+                    getSeverityColor(item.severity),
                   )}
                 />
 
@@ -132,7 +153,9 @@ export function ReportTab() {
                   {item.time}
                 </div>
 
-                <div className="text-sm leading-relaxed flex-1">{item.text}</div>
+                <div className="text-sm leading-relaxed flex-1">
+                  {item.text}
+                </div>
               </div>
             ))}
           </div>
@@ -148,22 +171,32 @@ export function ReportTab() {
         <CardContent>
           <div className="grid grid-cols-3 gap-3">
             <div className="bg-muted rounded-md p-3 text-center">
-              <div className="text-2xl font-bold text-blue-500">{totalOfficers}</div>
-              <div className="text-xs text-muted-foreground font-mono mt-1">Officers</div>
+              <div className="text-2xl font-bold text-blue-500">
+                {totalOfficers}
+              </div>
+              <div className="text-xs text-muted-foreground font-mono mt-1">
+                Officers
+              </div>
             </div>
 
             <div className="bg-muted rounded-md p-3 text-center">
-              <div className="text-2xl font-bold text-green-500">{resources?.length || 0}</div>
-              <div className="text-xs text-muted-foreground font-mono mt-1">Vehicles</div>
+              <div className="text-2xl font-bold text-green-500">
+                {resources?.length || 0}
+              </div>
+              <div className="text-xs text-muted-foreground font-mono mt-1">
+                Vehicles
+              </div>
             </div>
 
             <div className="bg-muted rounded-md p-3 text-center">
               <div className="text-2xl font-bold text-orange-500">3</div>
-              <div className="text-xs text-muted-foreground font-mono mt-1">Districts</div>
+              <div className="text-xs text-muted-foreground font-mono mt-1">
+                Districts
+              </div>
             </div>
           </div>
         </CardContent>
       </Card>
     </div>
-  );
+  )
 }

@@ -1,584 +1,2240 @@
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
-:root{
-  --bg:#0A0D14;
-  --surface:#111520;
-  --surface2:#171D2C;
-  --surface3:#1E2535;
-  --border:#2A3248;
-  --border2:#3A4560;
-  --text:#E8EAF0;
-  --text2:#8B94B0;
-  --text3:#5A6480;
-  --red:#FF4D4D;
-  --red-dim:#3D1515;
-  --amber:#F59E0B;
-  --amber-dim:#3D2800;
-  --blue:#3B82F6;
-  --blue-dim:#0F1F3D;
-  --green:#10B981;
-  --green-dim:#0A2A1E;
-  --purple:#8B5CF6;
-  --purple-dim:#1E1040;
-  --teal:#14B8A6;
-  --teal-dim:#0A2420;
-  --nepal:#003893;
-  --nepal-light:#4F6EBD;
-}
-body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      :root {
+        --bg: #0a0d14;
+        --surface: #111520;
+        --surface2: #171d2c;
+        --surface3: #1e2535;
+        --border: #2a3248;
+        --border2: #3a4560;
+        --text: #e8eaf0;
+        --text2: #8b94b0;
+        --text3: #5a6480;
+        --red: #ff4d4d;
+        --red-dim: #3d1515;
+        --amber: #f59e0b;
+        --amber-dim: #3d2800;
+        --blue: #3b82f6;
+        --blue-dim: #0f1f3d;
+        --green: #10b981;
+        --green-dim: #0a2a1e;
+        --purple: #8b5cf6;
+        --purple-dim: #1e1040;
+        --teal: #14b8a6;
+        --teal-dim: #0a2420;
+        --nepal: #003893;
+        --nepal-light: #4f6ebd;
+      }
+      body {
+        font-family: 'Inter', sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        min-height: 100vh;
+        overflow-x: hidden;
+      }
 
-/* NAV */
-.nav{display:flex;align-items:center;justify-content:space-between;padding:0 20px;height:52px;background:var(--surface);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100}
-.nav-brand{display:flex;align-items:center;gap:10px}
-.nav-logo{width:32px;height:32px;background:linear-gradient(135deg,var(--nepal),var(--nepal-light));border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:800;font-size:13px;color:#fff;letter-spacing:-0.5px}
-.nav-title{font-family:'Syne',sans-serif;font-weight:700;font-size:15px;color:var(--text);letter-spacing:-0.3px}
-.nav-subtitle{font-size:11px;color:var(--text3);margin-top:1px}
-.nav-right{display:flex;align-items:center;gap:6px}
-.live-badge{display:flex;align-items:center;gap:5px;background:var(--red-dim);border:1px solid rgba(255,77,77,0.3);color:var(--red);font-size:11px;font-weight:600;padding:4px 8px;border-radius:5px;font-family:'IBM Plex Mono',monospace}
-.live-dot{width:6px;height:6px;border-radius:50%;background:var(--red);animation:pulse 1.5s ease-in-out infinite}
-@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.6;transform:scale(0.8)}}
-.time-badge{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--text2);background:var(--surface2);border:1px solid var(--border);padding:4px 8px;border-radius:5px}
-.nav-btn{background:transparent;border:1px solid var(--border);color:var(--text2);padding:5px 10px;border-radius:6px;cursor:pointer;font-size:12px;display:flex;align-items:center;gap:5px;transition:all 0.15s}
-.nav-btn:hover{border-color:var(--border2);color:var(--text);background:var(--surface2)}
+      /* NAV */
+      .nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 20px;
+        height: 52px;
+        background: var(--surface);
+        border-bottom: 1px solid var(--border);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+      .nav-brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .nav-logo {
+        width: 32px;
+        height: 32px;
+        background: linear-gradient(135deg, var(--nepal), var(--nepal-light));
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: 'Syne', sans-serif;
+        font-weight: 800;
+        font-size: 13px;
+        color: #fff;
+        letter-spacing: -0.5px;
+      }
+      .nav-title {
+        font-family: 'Syne', sans-serif;
+        font-weight: 700;
+        font-size: 15px;
+        color: var(--text);
+        letter-spacing: -0.3px;
+      }
+      .nav-subtitle {
+        font-size: 11px;
+        color: var(--text3);
+        margin-top: 1px;
+      }
+      .nav-right {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+      .live-badge {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        background: var(--red-dim);
+        border: 1px solid rgba(255, 77, 77, 0.3);
+        color: var(--red);
+        font-size: 11px;
+        font-weight: 600;
+        padding: 4px 8px;
+        border-radius: 5px;
+        font-family: 'IBM Plex Mono', monospace;
+      }
+      .live-dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--red);
+        animation: pulse 1.5s ease-in-out infinite;
+      }
+      @keyframes pulse {
+        0%,
+        100% {
+          opacity: 1;
+          transform: scale(1);
+        }
+        50% {
+          opacity: 0.6;
+          transform: scale(0.8);
+        }
+      }
+      .time-badge {
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: 11px;
+        color: var(--text2);
+        background: var(--surface2);
+        border: 1px solid var(--border);
+        padding: 4px 8px;
+        border-radius: 5px;
+      }
+      .nav-btn {
+        background: transparent;
+        border: 1px solid var(--border);
+        color: var(--text2);
+        padding: 5px 10px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 12px;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        transition: all 0.15s;
+      }
+      .nav-btn:hover {
+        border-color: var(--border2);
+        color: var(--text);
+        background: var(--surface2);
+      }
 
-/* TABS */
-.tabs{display:flex;gap:2px;padding:12px 20px 0;background:var(--surface);border-bottom:1px solid var(--border)}
-.tab{padding:8px 16px;font-size:13px;font-weight:500;color:var(--text3);cursor:pointer;border-radius:6px 6px 0 0;border:1px solid transparent;border-bottom:none;transition:all 0.15s;display:flex;align-items:center;gap:7px}
-.tab.active{background:var(--bg);color:var(--text);border-color:var(--border);border-bottom:1px solid var(--bg)}
-.tab:hover:not(.active){color:var(--text2)}
-.tab-badge{background:var(--red-dim);color:var(--red);font-size:10px;font-family:'IBM Plex Mono',monospace;padding:1px 5px;border-radius:3px}
+      /* TABS */
+      .tabs {
+        display: flex;
+        gap: 2px;
+        padding: 12px 20px 0;
+        background: var(--surface);
+        border-bottom: 1px solid var(--border);
+      }
+      .tab {
+        padding: 8px 16px;
+        font-size: 13px;
+        font-weight: 500;
+        color: var(--text3);
+        cursor: pointer;
+        border-radius: 6px 6px 0 0;
+        border: 1px solid transparent;
+        border-bottom: none;
+        transition: all 0.15s;
+        display: flex;
+        align-items: center;
+        gap: 7px;
+      }
+      .tab.active {
+        background: var(--bg);
+        color: var(--text);
+        border-color: var(--border);
+        border-bottom: 1px solid var(--bg);
+      }
+      .tab:hover:not(.active) {
+        color: var(--text2);
+      }
+      .tab-badge {
+        background: var(--red-dim);
+        color: var(--red);
+        font-size: 10px;
+        font-family: 'IBM Plex Mono', monospace;
+        padding: 1px 5px;
+        border-radius: 3px;
+      }
 
-/* LAYOUT */
-.main{display:flex;height:calc(100vh - 105px)}
-.sidebar{width:280px;min-width:280px;background:var(--surface);border-right:1px solid var(--border);overflow-y:auto;display:flex;flex-direction:column}
-.content{flex:1;overflow-y:auto}
-.right-panel{width:300px;min-width:300px;background:var(--surface);border-left:1px solid var(--border);overflow-y:auto}
+      /* LAYOUT */
+      .main {
+        display: flex;
+        height: calc(100vh - 105px);
+      }
+      .sidebar {
+        width: 280px;
+        min-width: 280px;
+        background: var(--surface);
+        border-right: 1px solid var(--border);
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+      }
+      .content {
+        flex: 1;
+        overflow-y: auto;
+      }
+      .right-panel {
+        width: 300px;
+        min-width: 300px;
+        background: var(--surface);
+        border-left: 1px solid var(--border);
+        overflow-y: auto;
+      }
 
-/* STAT CARDS */
-.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;padding:16px;border-bottom:1px solid var(--border)}
-.stat-card{background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:12px 14px}
-.stat-label{font-size:11px;color:var(--text3);margin-bottom:6px;text-transform:uppercase;letter-spacing:0.5px;font-family:'IBM Plex Mono',monospace}
-.stat-value{font-family:'Syne',sans-serif;font-weight:700;font-size:22px;line-height:1}
-.stat-sub{font-size:11px;color:var(--text3);margin-top:4px}
-.stat-red .stat-value{color:var(--red)}
-.stat-amber .stat-value{color:var(--amber)}
-.stat-green .stat-value{color:var(--green)}
-.stat-blue .stat-value{color:var(--blue)}
+      /* STAT CARDS */
+      .stats-row {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+        padding: 16px;
+        border-bottom: 1px solid var(--border);
+      }
+      .stat-card {
+        background: var(--surface2);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 12px 14px;
+      }
+      .stat-label {
+        font-size: 11px;
+        color: var(--text3);
+        margin-bottom: 6px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        font-family: 'IBM Plex Mono', monospace;
+      }
+      .stat-value {
+        font-family: 'Syne', sans-serif;
+        font-weight: 700;
+        font-size: 22px;
+        line-height: 1;
+      }
+      .stat-sub {
+        font-size: 11px;
+        color: var(--text3);
+        margin-top: 4px;
+      }
+      .stat-red .stat-value {
+        color: var(--red);
+      }
+      .stat-amber .stat-value {
+        color: var(--amber);
+      }
+      .stat-green .stat-value {
+        color: var(--green);
+      }
+      .stat-blue .stat-value {
+        color: var(--blue);
+      }
 
-/* SIDEBAR SECTIONS */
-.section-header{display:flex;align-items:center;justify-content:space-between;padding:12px 16px 8px;font-size:11px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:0.8px;font-family:'IBM Plex Mono',monospace}
-.add-btn{background:var(--surface3);border:1px solid var(--border);color:var(--text2);padding:3px 8px;border-radius:4px;cursor:pointer;font-size:11px;display:flex;align-items:center;gap:4px;transition:all 0.15s}
-.add-btn:hover{border-color:var(--blue);color:var(--blue)}
+      /* SIDEBAR SECTIONS */
+      .section-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 12px 16px 8px;
+        font-size: 11px;
+        font-weight: 600;
+        color: var(--text3);
+        text-transform: uppercase;
+        letter-spacing: 0.8px;
+        font-family: 'IBM Plex Mono', monospace;
+      }
+      .add-btn {
+        background: var(--surface3);
+        border: 1px solid var(--border);
+        color: var(--text2);
+        padding: 3px 8px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 11px;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        transition: all 0.15s;
+      }
+      .add-btn:hover {
+        border-color: var(--blue);
+        color: var(--blue);
+      }
 
-/* INCIDENT LIST */
-.incident-item{display:flex;align-items:flex-start;gap:10px;padding:10px 16px;border-bottom:1px solid var(--border);cursor:pointer;transition:background 0.1s}
-.incident-item:hover{background:var(--surface2)}
-.incident-item.active{background:var(--surface3);border-left:2px solid var(--blue)}
-.severity-dot{width:8px;height:8px;border-radius:50%;margin-top:4px;flex-shrink:0}
-.severity-critical{background:var(--red);box-shadow:0 0 6px rgba(255,77,77,0.5)}
-.severity-high{background:var(--amber)}
-.severity-medium{background:var(--blue)}
-.severity-low{background:var(--green)}
-.incident-title{font-size:13px;font-weight:500;color:var(--text);line-height:1.3}
-.incident-meta{font-size:11px;color:var(--text3);margin-top:2px;display:flex;gap:8px;align-items:center}
-.category-tag{font-size:10px;padding:1px 6px;border-radius:3px;font-family:'IBM Plex Mono',monospace;font-weight:500}
-.cat-disaster{background:rgba(255,77,77,0.15);color:#FF8080;border:1px solid rgba(255,77,77,0.2)}
-.cat-protest{background:rgba(245,158,11,0.15);color:#FBBF24;border:1px solid rgba(245,158,11,0.2)}
-.cat-traffic{background:rgba(59,130,246,0.15);color:#60A5FA;border:1px solid rgba(59,130,246,0.2)}
-.cat-crime{background:rgba(139,92,246,0.15);color:#A78BFA;border:1px solid rgba(139,92,246,0.2)}
-.incident-time{font-family:'IBM Plex Mono',monospace}
+      /* INCIDENT LIST */
+      .incident-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        padding: 10px 16px;
+        border-bottom: 1px solid var(--border);
+        cursor: pointer;
+        transition: background 0.1s;
+      }
+      .incident-item:hover {
+        background: var(--surface2);
+      }
+      .incident-item.active {
+        background: var(--surface3);
+        border-left: 2px solid var(--blue);
+      }
+      .severity-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        margin-top: 4px;
+        flex-shrink: 0;
+      }
+      .severity-critical {
+        background: var(--red);
+        box-shadow: 0 0 6px rgba(255, 77, 77, 0.5);
+      }
+      .severity-high {
+        background: var(--amber);
+      }
+      .severity-medium {
+        background: var(--blue);
+      }
+      .severity-low {
+        background: var(--green);
+      }
+      .incident-title {
+        font-size: 13px;
+        font-weight: 500;
+        color: var(--text);
+        line-height: 1.3;
+      }
+      .incident-meta {
+        font-size: 11px;
+        color: var(--text3);
+        margin-top: 2px;
+        display: flex;
+        gap: 8px;
+        align-items: center;
+      }
+      .category-tag {
+        font-size: 10px;
+        padding: 1px 6px;
+        border-radius: 3px;
+        font-family: 'IBM Plex Mono', monospace;
+        font-weight: 500;
+      }
+      .cat-disaster {
+        background: rgba(255, 77, 77, 0.15);
+        color: #ff8080;
+        border: 1px solid rgba(255, 77, 77, 0.2);
+      }
+      .cat-protest {
+        background: rgba(245, 158, 11, 0.15);
+        color: #fbbf24;
+        border: 1px solid rgba(245, 158, 11, 0.2);
+      }
+      .cat-traffic {
+        background: rgba(59, 130, 246, 0.15);
+        color: #60a5fa;
+        border: 1px solid rgba(59, 130, 246, 0.2);
+      }
+      .cat-crime {
+        background: rgba(139, 92, 246, 0.15);
+        color: #a78bfa;
+        border: 1px solid rgba(139, 92, 246, 0.2);
+      }
+      .incident-time {
+        font-family: 'IBM Plex Mono', monospace;
+      }
 
-/* MAP AREA */
-.map-container{position:relative;background:var(--surface2);flex:1;overflow:hidden;min-height:400px}
-.map-svg{width:100%;height:100%}
-.map-controls{position:absolute;bottom:16px;right:16px;display:flex;flex-direction:column;gap:4px}
-.map-ctrl-btn{width:32px;height:32px;background:var(--surface);border:1px solid var(--border);border-radius:6px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--text2);font-size:14px;transition:all 0.15s}
-.map-ctrl-btn:hover{background:var(--surface3);color:var(--text)}
-.map-legend{position:absolute;bottom:16px;left:16px;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:10px 12px;font-size:11px}
-.legend-item{display:flex;align-items:center;gap:7px;margin-bottom:5px;color:var(--text2)}
-.legend-item:last-child{margin-bottom:0}
-.legend-dot{width:8px;height:8px;border-radius:50%}
+      /* MAP AREA */
+      .map-container {
+        position: relative;
+        background: var(--surface2);
+        flex: 1;
+        overflow: hidden;
+        min-height: 400px;
+      }
+      .map-svg {
+        width: 100%;
+        height: 100%;
+      }
+      .map-controls {
+        position: absolute;
+        bottom: 16px;
+        right: 16px;
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+      .map-ctrl-btn {
+        width: 32px;
+        height: 32px;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 6px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        color: var(--text2);
+        font-size: 14px;
+        transition: all 0.15s;
+      }
+      .map-ctrl-btn:hover {
+        background: var(--surface3);
+        color: var(--text);
+      }
+      .map-legend {
+        position: absolute;
+        bottom: 16px;
+        left: 16px;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 10px 12px;
+        font-size: 11px;
+      }
+      .legend-item {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        margin-bottom: 5px;
+        color: var(--text2);
+      }
+      .legend-item:last-child {
+        margin-bottom: 0;
+      }
+      .legend-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+      }
 
-/* DISTRICT PANEL */
-.district-item{padding:10px 16px;border-bottom:1px solid var(--border);cursor:pointer;transition:background 0.1s}
-.district-item:hover{background:var(--surface2)}
-.district-name{font-size:13px;font-weight:500;color:var(--text)}
-.district-bar-row{display:flex;align-items:center;gap:8px;margin-top:5px}
-.district-bar-bg{flex:1;height:3px;background:var(--surface3);border-radius:2px}
-.district-bar-fill{height:3px;border-radius:2px}
-.district-count{font-size:11px;font-family:'IBM Plex Mono',monospace;color:var(--text3);min-width:24px;text-align:right}
-.status-badge{display:inline-flex;align-items:center;gap:4px;font-size:10px;padding:2px 6px;border-radius:3px;font-family:'IBM Plex Mono',monospace}
-.status-active{background:rgba(255,77,77,0.15);color:var(--red);border:1px solid rgba(255,77,77,0.2)}
-.status-monitoring{background:rgba(245,158,11,0.15);color:var(--amber);border:1px solid rgba(245,158,11,0.2)}
-.status-normal{background:rgba(16,185,129,0.15);color:var(--green);border:1px solid rgba(16,185,129,0.2)}
+      /* DISTRICT PANEL */
+      .district-item {
+        padding: 10px 16px;
+        border-bottom: 1px solid var(--border);
+        cursor: pointer;
+        transition: background 0.1s;
+      }
+      .district-item:hover {
+        background: var(--surface2);
+      }
+      .district-name {
+        font-size: 13px;
+        font-weight: 500;
+        color: var(--text);
+      }
+      .district-bar-row {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-top: 5px;
+      }
+      .district-bar-bg {
+        flex: 1;
+        height: 3px;
+        background: var(--surface3);
+        border-radius: 2px;
+      }
+      .district-bar-fill {
+        height: 3px;
+        border-radius: 2px;
+      }
+      .district-count {
+        font-size: 11px;
+        font-family: 'IBM Plex Mono', monospace;
+        color: var(--text3);
+        min-width: 24px;
+        text-align: right;
+      }
+      .status-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        font-size: 10px;
+        padding: 2px 6px;
+        border-radius: 3px;
+        font-family: 'IBM Plex Mono', monospace;
+      }
+      .status-active {
+        background: rgba(255, 77, 77, 0.15);
+        color: var(--red);
+        border: 1px solid rgba(255, 77, 77, 0.2);
+      }
+      .status-monitoring {
+        background: rgba(245, 158, 11, 0.15);
+        color: var(--amber);
+        border: 1px solid rgba(245, 158, 11, 0.2);
+      }
+      .status-normal {
+        background: rgba(16, 185, 129, 0.15);
+        color: var(--green);
+        border: 1px solid rgba(16, 185, 129, 0.2);
+      }
 
-/* RIGHT PANEL */
-.report-card{margin:12px;background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:14px}
-.report-title{font-size:12px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:0.6px;font-family:'IBM Plex Mono',monospace;margin-bottom:8px;display:flex;align-items:center;gap:6px}
-.report-title .ai-badge{font-size:9px;background:var(--purple-dim);color:var(--purple);border:1px solid rgba(139,92,246,0.3);padding:1px 5px;border-radius:3px;text-transform:none;letter-spacing:0}
-.nepali-text{font-size:13px;color:var(--text);line-height:1.7;font-family:'Inter',sans-serif}
-.report-footer{margin-top:10px;font-size:11px;color:var(--text3);font-family:'IBM Plex Mono',monospace;display:flex;justify-content:space-between}
-.action-btn{width:100%;margin-top:8px;background:var(--surface3);border:1px solid var(--border);color:var(--text2);padding:7px 12px;border-radius:6px;cursor:pointer;font-size:12px;display:flex;align-items:center;justify-content:center;gap:6px;transition:all 0.15s;font-family:'Inter',sans-serif}
-.action-btn:hover{border-color:var(--blue);color:var(--blue);background:rgba(59,130,246,0.08)}
-.action-btn.primary{background:var(--nepal);border-color:var(--nepal-light);color:#fff}
-.action-btn.primary:hover{background:var(--nepal-light)}
+      /* RIGHT PANEL */
+      .report-card {
+        margin: 12px;
+        background: var(--surface2);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 14px;
+      }
+      .report-title {
+        font-size: 12px;
+        font-weight: 600;
+        color: var(--text3);
+        text-transform: uppercase;
+        letter-spacing: 0.6px;
+        font-family: 'IBM Plex Mono', monospace;
+        margin-bottom: 8px;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+      .report-title .ai-badge {
+        font-size: 9px;
+        background: var(--purple-dim);
+        color: var(--purple);
+        border: 1px solid rgba(139, 92, 246, 0.3);
+        padding: 1px 5px;
+        border-radius: 3px;
+        text-transform: none;
+        letter-spacing: 0;
+      }
+      .nepali-text {
+        font-size: 13px;
+        color: var(--text);
+        line-height: 1.7;
+        font-family: 'Inter', sans-serif;
+      }
+      .report-footer {
+        margin-top: 10px;
+        font-size: 11px;
+        color: var(--text3);
+        font-family: 'IBM Plex Mono', monospace;
+        display: flex;
+        justify-content: space-between;
+      }
+      .action-btn {
+        width: 100%;
+        margin-top: 8px;
+        background: var(--surface3);
+        border: 1px solid var(--border);
+        color: var(--text2);
+        padding: 7px 12px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        transition: all 0.15s;
+        font-family: 'Inter', sans-serif;
+      }
+      .action-btn:hover {
+        border-color: var(--blue);
+        color: var(--blue);
+        background: rgba(59, 130, 246, 0.08);
+      }
+      .action-btn.primary {
+        background: var(--nepal);
+        border-color: var(--nepal-light);
+        color: #fff;
+      }
+      .action-btn.primary:hover {
+        background: var(--nepal-light);
+      }
 
-/* RESOURCE ITEMS */
-.resource-item{display:flex;align-items:center;gap:10px;padding:8px 16px;border-bottom:1px solid var(--border)}
-.resource-icon{width:32px;height:32px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0}
-.resource-name{font-size:13px;color:var(--text);font-weight:500}
-.resource-meta{font-size:11px;color:var(--text3)}
-.resource-status{margin-left:auto;font-size:10px;padding:2px 6px;border-radius:3px;font-family:'IBM Plex Mono',monospace;white-space:nowrap}
+      /* RESOURCE ITEMS */
+      .resource-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 8px 16px;
+        border-bottom: 1px solid var(--border);
+      }
+      .resource-icon {
+        width: 32px;
+        height: 32px;
+        border-radius: 6px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 15px;
+        flex-shrink: 0;
+      }
+      .resource-name {
+        font-size: 13px;
+        color: var(--text);
+        font-weight: 500;
+      }
+      .resource-meta {
+        font-size: 11px;
+        color: var(--text3);
+      }
+      .resource-status {
+        margin-left: auto;
+        font-size: 10px;
+        padding: 2px 6px;
+        border-radius: 3px;
+        font-family: 'IBM Plex Mono', monospace;
+        white-space: nowrap;
+      }
 
-/* REPORT TAB */
-.report-page{padding:16px}
-.generate-btn{display:flex;align-items:center;justify-content:center;gap:8px;background:linear-gradient(135deg,var(--nepal),var(--nepal-light));color:#fff;padding:10px 18px;border-radius:8px;border:none;cursor:pointer;font-size:13px;font-weight:600;font-family:'Syne',sans-serif;width:100%;margin-bottom:16px;transition:opacity 0.2s}
-.generate-btn:hover{opacity:0.9}
-.report-section{background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:14px;margin-bottom:12px}
-.rs-title{font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:0.6px;font-family:'IBM Plex Mono',monospace;margin-bottom:10px}
-.timeline-item{display:flex;gap:12px;margin-bottom:12px;position:relative}
-.timeline-item::before{content:'';position:absolute;left:5px;top:16px;width:1px;height:calc(100% + 4px);background:var(--border)}
-.timeline-item:last-child::before{display:none}
-.tl-dot{width:11px;height:11px;border-radius:50%;flex-shrink:0;margin-top:3px;border:2px solid var(--bg);position:relative;z-index:1}
-.tl-time{font-size:11px;color:var(--text3);font-family:'IBM Plex Mono',monospace;white-space:nowrap;min-width:44px}
-.tl-text{font-size:12px;color:var(--text2);line-height:1.5}
+      /* REPORT TAB */
+      .report-page {
+        padding: 16px;
+      }
+      .generate-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        background: linear-gradient(135deg, var(--nepal), var(--nepal-light));
+        color: #fff;
+        padding: 10px 18px;
+        border-radius: 8px;
+        border: none;
+        cursor: pointer;
+        font-size: 13px;
+        font-weight: 600;
+        font-family: 'Syne', sans-serif;
+        width: 100%;
+        margin-bottom: 16px;
+        transition: opacity 0.2s;
+      }
+      .generate-btn:hover {
+        opacity: 0.9;
+      }
+      .report-section {
+        background: var(--surface2);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 14px;
+        margin-bottom: 12px;
+      }
+      .rs-title {
+        font-size: 11px;
+        color: var(--text3);
+        text-transform: uppercase;
+        letter-spacing: 0.6px;
+        font-family: 'IBM Plex Mono', monospace;
+        margin-bottom: 10px;
+      }
+      .timeline-item {
+        display: flex;
+        gap: 12px;
+        margin-bottom: 12px;
+        position: relative;
+      }
+      .timeline-item::before {
+        content: '';
+        position: absolute;
+        left: 5px;
+        top: 16px;
+        width: 1px;
+        height: calc(100% + 4px);
+        background: var(--border);
+      }
+      .timeline-item:last-child::before {
+        display: none;
+      }
+      .tl-dot {
+        width: 11px;
+        height: 11px;
+        border-radius: 50%;
+        flex-shrink: 0;
+        margin-top: 3px;
+        border: 2px solid var(--bg);
+        position: relative;
+        z-index: 1;
+      }
+      .tl-time {
+        font-size: 11px;
+        color: var(--text3);
+        font-family: 'IBM Plex Mono', monospace;
+        white-space: nowrap;
+        min-width: 44px;
+      }
+      .tl-text {
+        font-size: 12px;
+        color: var(--text2);
+        line-height: 1.5;
+      }
 
-/* REPORT FORM */
-.report-form{padding:16px}
-.form-group{margin-bottom:14px}
-.form-label{font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:0.5px;font-family:'IBM Plex Mono',monospace;margin-bottom:6px;display:block}
-.form-input,.form-select,.form-textarea{width:100%;background:var(--surface2);border:1px solid var(--border);color:var(--text);padding:8px 10px;border-radius:6px;font-size:13px;font-family:'Inter',sans-serif;outline:none;transition:border-color 0.15s}
-.form-input:focus,.form-select:focus,.form-textarea:focus{border-color:var(--blue)}
-.form-select{cursor:pointer;appearance:none}
-.form-textarea{resize:vertical;min-height:80px}
-.form-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.severity-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
-.sev-option{padding:8px 4px;border:1px solid var(--border);border-radius:6px;text-align:center;cursor:pointer;transition:all 0.15s;font-size:11px;font-family:'IBM Plex Mono',monospace}
-.sev-option:hover{border-color:var(--border2)}
-.sev-option.selected-critical{border-color:var(--red);background:var(--red-dim);color:var(--red)}
-.sev-option.selected-high{border-color:var(--amber);background:var(--amber-dim);color:var(--amber)}
-.sev-option.selected-medium{border-color:var(--blue);background:var(--blue-dim);color:var(--blue)}
-.sev-option.selected-low{border-color:var(--green);background:var(--green-dim);color:var(--green)}
+      /* REPORT FORM */
+      .report-form {
+        padding: 16px;
+      }
+      .form-group {
+        margin-bottom: 14px;
+      }
+      .form-label {
+        font-size: 11px;
+        color: var(--text3);
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        font-family: 'IBM Plex Mono', monospace;
+        margin-bottom: 6px;
+        display: block;
+      }
+      .form-input,
+      .form-select,
+      .form-textarea {
+        width: 100%;
+        background: var(--surface2);
+        border: 1px solid var(--border);
+        color: var(--text);
+        padding: 8px 10px;
+        border-radius: 6px;
+        font-size: 13px;
+        font-family: 'Inter', sans-serif;
+        outline: none;
+        transition: border-color 0.15s;
+      }
+      .form-input:focus,
+      .form-select:focus,
+      .form-textarea:focus {
+        border-color: var(--blue);
+      }
+      .form-select {
+        cursor: pointer;
+        appearance: none;
+      }
+      .form-textarea {
+        resize: vertical;
+        min-height: 80px;
+      }
+      .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+      }
+      .severity-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 6px;
+      }
+      .sev-option {
+        padding: 8px 4px;
+        border: 1px solid var(--border);
+        border-radius: 6px;
+        text-align: center;
+        cursor: pointer;
+        transition: all 0.15s;
+        font-size: 11px;
+        font-family: 'IBM Plex Mono', monospace;
+      }
+      .sev-option:hover {
+        border-color: var(--border2);
+      }
+      .sev-option.selected-critical {
+        border-color: var(--red);
+        background: var(--red-dim);
+        color: var(--red);
+      }
+      .sev-option.selected-high {
+        border-color: var(--amber);
+        background: var(--amber-dim);
+        color: var(--amber);
+      }
+      .sev-option.selected-medium {
+        border-color: var(--blue);
+        background: var(--blue-dim);
+        color: var(--blue);
+      }
+      .sev-option.selected-low {
+        border-color: var(--green);
+        background: var(--green-dim);
+        color: var(--green);
+      }
 
-/* DETAIL VIEW */
-.detail-view{display:none;padding:16px}
-.detail-view.visible{display:block}
-.detail-header{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:16px}
-.detail-back{background:transparent;border:1px solid var(--border);color:var(--text2);padding:5px 10px;border-radius:6px;cursor:pointer;font-size:12px;display:flex;align-items:center;gap:5px;transition:all 0.15s}
-.detail-back:hover{border-color:var(--border2);color:var(--text)}
-.detail-field{margin-bottom:12px}
-.detail-field-label{font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:0.5px;font-family:'IBM Plex Mono',monospace;margin-bottom:4px}
-.detail-field-value{font-size:13px;color:var(--text)}
-.update-feed{border-top:1px solid var(--border);padding-top:12px;margin-top:12px}
-.update-item{display:flex;gap:10px;margin-bottom:10px}
-.update-avatar{width:24px;height:24px;border-radius:50%;background:var(--surface3);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:10px;color:var(--text3);flex-shrink:0;font-family:'IBM Plex Mono',monospace;font-weight:600}
-.update-text{font-size:12px;color:var(--text2);line-height:1.5}
-.update-time{font-size:10px;color:var(--text3);font-family:'IBM Plex Mono',monospace}
+      /* DETAIL VIEW */
+      .detail-view {
+        display: none;
+        padding: 16px;
+      }
+      .detail-view.visible {
+        display: block;
+      }
+      .detail-header {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        margin-bottom: 16px;
+      }
+      .detail-back {
+        background: transparent;
+        border: 1px solid var(--border);
+        color: var(--text2);
+        padding: 5px 10px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 12px;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        transition: all 0.15s;
+      }
+      .detail-back:hover {
+        border-color: var(--border2);
+        color: var(--text);
+      }
+      .detail-field {
+        margin-bottom: 12px;
+      }
+      .detail-field-label {
+        font-size: 11px;
+        color: var(--text3);
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        font-family: 'IBM Plex Mono', monospace;
+        margin-bottom: 4px;
+      }
+      .detail-field-value {
+        font-size: 13px;
+        color: var(--text);
+      }
+      .update-feed {
+        border-top: 1px solid var(--border);
+        padding-top: 12px;
+        margin-top: 12px;
+      }
+      .update-item {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 10px;
+      }
+      .update-avatar {
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        background: var(--surface3);
+        border: 1px solid var(--border);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 10px;
+        color: var(--text3);
+        flex-shrink: 0;
+        font-family: 'IBM Plex Mono', monospace;
+        font-weight: 600;
+      }
+      .update-text {
+        font-size: 12px;
+        color: var(--text2);
+        line-height: 1.5;
+      }
+      .update-time {
+        font-size: 10px;
+        color: var(--text3);
+        font-family: 'IBM Plex Mono', monospace;
+      }
 
-/* SCROLLBAR */
-::-webkit-scrollbar{width:4px}
-::-webkit-scrollbar-track{background:transparent}
-::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
+      /* SCROLLBAR */
+      ::-webkit-scrollbar {
+        width: 4px;
+      }
+      ::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: var(--border);
+        border-radius: 2px;
+      }
 
-/* NEPAL MAP PINS */
-.map-pin{cursor:pointer;transition:transform 0.15s}
-.map-pin:hover{transform:scale(1.2)}
-.pin-ring{animation:ring-pulse 2s ease-in-out infinite}
-@keyframes ring-pulse{0%,100%{opacity:0.6;r:14}50%{opacity:0.2;r:20}}
-</style>
-</head>
-<body>
-
-<nav class="nav">
-  <div class="nav-brand">
-    <div class="nav-logo">SM</div>
-    <div>
-      <div class="nav-title">SituationalMap NP</div>
-      <div class="nav-subtitle">Nepal Police — Command Operations</div>
-    </div>
-  </div>
-  <div class="nav-right">
-    <div class="live-badge"><span class="live-dot"></span>LIVE</div>
-    <div class="time-badge" id="clock">--:--:--</div>
-    <button class="nav-btn" onclick="openReportForm()"><i class="ti ti-plus"></i> Log Incident</button>
-    <button class="nav-btn"><i class="ti ti-bell"></i></button>
-    <button class="nav-btn"><i class="ti ti-user"></i> DSP Sharma</button>
-  </div>
-</nav>
-
-<div class="tabs">
-  <div class="tab active" onclick="switchTab('dashboard', this)"><i class="ti ti-map"></i> Operational Map</div>
-  <div class="tab" onclick="switchTab('incidents', this)"><i class="ti ti-alert-triangle"></i> Incidents <span class="tab-badge">7</span></div>
-  <div class="tab" onclick="switchTab('report', this)"><i class="ti ti-file-text"></i> Situation Report</div>
-  <div class="tab" onclick="switchTab('resources', this)"><i class="ti ti-users"></i> Resources</div>
-</div>
-
-<!-- DASHBOARD TAB -->
-<div id="tab-dashboard" class="main">
-  <!-- SIDEBAR: Incidents -->
-  <div class="sidebar">
-    <div class="stats-row" style="grid-template-columns:1fr 1fr;padding:12px;gap:8px;border-bottom:1px solid var(--border)">
-      <div class="stat-card stat-red" style="padding:10px 12px">
-        <div class="stat-label">Critical</div>
-        <div class="stat-value">2</div>
-      </div>
-      <div class="stat-card stat-amber">
-        <div class="stat-label">High</div>
-        <div class="stat-value">3</div>
-      </div>
-      <div class="stat-card stat-blue">
-        <div class="stat-label">Active</div>
-        <div class="stat-value">7</div>
-      </div>
-      <div class="stat-card stat-green">
-        <div class="stat-label">Resolved</div>
-        <div class="stat-value">12</div>
-      </div>
-    </div>
-    <div class="section-header">Active Incidents <button class="add-btn" onclick="openReportForm()"><i class="ti ti-plus"></i> Add</button></div>
-    <div id="incident-list"></div>
-  </div>
-
-  <!-- MAP -->
-  <div class="content" style="display:flex;flex-direction:column">
-    <div class="map-container" style="flex:1">
-      <svg class="map-svg" viewBox="0 0 680 460" id="mainmap">
-        <!-- Nepal simplified outline -->
-        <defs>
-          <filter id="glow-red"><feGaussianBlur stdDeviation="3" result="blur"/><feComposite in="SourceGraphic" in2="blur" operator="over"/></filter>
-        </defs>
-        <!-- Background -->
-        <rect width="680" height="460" fill="#0E1422"/>
-        <!-- Grid lines -->
-        <g stroke="#1A2035" stroke-width="0.5" opacity="0.6">
-          <line x1="0" y1="92" x2="680" y2="92"/><line x1="0" y1="184" x2="680" y2="184"/>
-          <line x1="0" y1="276" x2="680" y2="276"/><line x1="0" y1="368" x2="680" y2="368"/>
-          <line x1="136" y1="0" x2="136" y2="460"/><line x1="272" y1="0" x2="272" y2="460"/>
-          <line x1="408" y1="0" x2="408" y2="460"/><line x1="544" y1="0" x2="544" y2="460"/>
-        </g>
-        <!-- Nepal map outline (simplified) -->
-        <path d="M60,180 L80,155 L130,145 L180,130 L240,120 L300,115 L360,118 L420,112 L480,118 L540,125 L600,130 L630,145 L640,165 L620,185 L580,195 L540,210 L500,230 L470,260 L450,290 L430,310 L400,325 L370,330 L340,320 L310,310 L280,315 L250,330 L220,340 L200,325 L170,300 L140,270 L110,240 L80,220 Z" 
-              fill="#141B2D" stroke="#2A3560" stroke-width="1.5" opacity="0.9"/>
-        <!-- Province regions (simplified) -->
-        <path d="M60,180 L130,145 L180,200 L150,250 L100,240 L80,220 Z" fill="#1A2545" stroke="#2A3560" stroke-width="0.5" opacity="0.7"/>
-        <path d="M130,145 L240,120 L280,175 L240,210 L180,200 Z" fill="#1A2545" stroke="#2A3560" stroke-width="0.5" opacity="0.7"/>
-        <path d="M240,120 L360,118 L380,175 L340,210 L280,175 Z" fill="#1A2545" stroke="#2A3560" stroke-width="0.5" opacity="0.7"/>
-        <path d="M360,118 L480,118 L490,180 L430,215 L380,175 Z" fill="#1A2545" stroke="#2A3560" stroke-width="0.5" opacity="0.7"/>
-        <path d="M480,118 L640,145 L640,200 L580,210 L530,215 L490,180 Z" fill="#1A2545" stroke="#2A3560" stroke-width="0.5" opacity="0.7"/>
-        <!-- Kathmandu Valley highlight -->
-        <circle cx="320" cy="195" r="22" fill="#1E2B50" stroke="#3B82F6" stroke-width="1" stroke-dasharray="3 2" opacity="0.8"/>
-        <text x="320" y="228" text-anchor="middle" font-size="9" fill="#3B82F6" font-family="IBM Plex Mono, monospace" opacity="0.8">Kathmandu</text>
-        <!-- Province labels -->
-        <text x="115" y="210" text-anchor="middle" font-size="9" fill="#4A5580" font-family="IBM Plex Mono">Koshi</text>
-        <text x="205" y="180" text-anchor="middle" font-size="9" fill="#4A5580" font-family="IBM Plex Mono">Madhesh</text>
-        <text x="430" y="170" text-anchor="middle" font-size="9" fill="#4A5580" font-family="IBM Plex Mono">Gandaki</text>
-        <text x="560" y="175" text-anchor="middle" font-size="9" fill="#4A5580" font-family="IBM Plex Mono">Karnali</text>
-        <!-- Incident pins -->
-        <!-- Critical: Flood Bardiya -->
-        <g class="map-pin" onclick="selectIncident(0)" id="pin-0">
-          <circle cx="420" cy="270" r="18" fill="rgba(255,77,77,0.08)" class="pin-ring"/>
-          <circle cx="420" cy="270" r="10" fill="rgba(255,77,77,0.25)" stroke="none"/>
-          <circle cx="420" cy="270" r="6" fill="#FF4D4D" stroke="#fff" stroke-width="1.5"/>
-          <text x="420" y="296" text-anchor="middle" font-size="9" fill="#FF8080" font-family="IBM Plex Mono">Bardiya</text>
-        </g>
-        <!-- Critical: Landslide Kaski -->
-        <g class="map-pin" onclick="selectIncident(1)" id="pin-1">
-          <circle cx="370" cy="225" r="18" fill="rgba(255,77,77,0.08)" class="pin-ring"/>
-          <circle cx="370" cy="225" r="10" fill="rgba(255,77,77,0.25)" stroke="none"/>
-          <circle cx="370" cy="225" r="6" fill="#FF4D4D" stroke="#fff" stroke-width="1.5"/>
-          <text x="370" y="251" text-anchor="middle" font-size="9" fill="#FF8080" font-family="IBM Plex Mono">Kaski</text>
-        </g>
-        <!-- High: Protest KTM -->
-        <g class="map-pin" onclick="selectIncident(2)" id="pin-2">
-          <circle cx="320" cy="200" r="8" fill="rgba(245,158,11,0.2)" stroke="none"/>
-          <circle cx="320" cy="200" r="5" fill="#F59E0B" stroke="#fff" stroke-width="1.5"/>
-        </g>
-        <!-- High: Traffic Pokhara -->
-        <g class="map-pin" onclick="selectIncident(3)" id="pin-3">
-          <circle cx="340" cy="218" r="8" fill="rgba(59,130,246,0.2)" stroke="none"/>
-          <circle cx="340" cy="218" r="5" fill="#3B82F6" stroke="#fff" stroke-width="1.5"/>
-        </g>
-        <!-- Medium: Birgunj -->
-        <g class="map-pin" onclick="selectIncident(4)" id="pin-4">
-          <circle cx="285" cy="295" r="7" fill="rgba(59,130,246,0.2)" stroke="none"/>
-          <circle cx="285" cy="295" r="4" fill="#3B82F6" stroke="#fff" stroke-width="1"/>
-        </g>
-        <!-- Medium: Butwal -->
-        <g class="map-pin" onclick="selectIncident(5)" id="pin-5">
-          <circle cx="300" cy="280" r="7" fill="rgba(245,158,11,0.2)" stroke="none"/>
-          <circle cx="300" cy="280" r="4" fill="#F59E0B" stroke="#fff" stroke-width="1"/>
-        </g>
-        <!-- Resources -->
-        <!-- Units -->
-        <g opacity="0.8">
-          <rect x="306" y="188" width="12" height="12" rx="2" fill="#0F1F3D" stroke="#3B82F6" stroke-width="1"/>
-          <text x="312" y="198" text-anchor="middle" font-size="7" fill="#3B82F6" font-family="IBM Plex Mono">U</text>
-        </g>
-        <g opacity="0.8">
-          <rect x="362" y="208" width="12" height="12" rx="2" fill="#0A2A1E" stroke="#10B981" stroke-width="1"/>
-          <text x="368" y="218" text-anchor="middle" font-size="7" fill="#10B981" font-family="IBM Plex Mono">V</text>
-        </g>
-        <g opacity="0.8">
-          <rect x="406" y="255" width="12" height="12" rx="2" fill="#3D1515" stroke="#FF4D4D" stroke-width="1"/>
-          <text x="412" y="265" text-anchor="middle" font-size="7" fill="#FF4D4D" font-family="IBM Plex Mono">V</text>
-        </g>
-        <!-- Compass -->
-        <g transform="translate(636,44)">
-          <circle r="20" fill="#111520" stroke="#2A3248" stroke-width="1"/>
-          <text y="-7" text-anchor="middle" font-size="9" fill="#8B94B0" font-family="IBM Plex Mono">N</text>
-          <line x1="0" y1="-16" x2="0" y2="-4" stroke="#8B94B0" stroke-width="1"/>
-          <line x1="0" y1="4" x2="0" y2="16" stroke="#8B94B0" stroke-width="0.5"/>
-          <line x1="-16" y1="0" x2="-4" y2="0" stroke="#8B94B0" stroke-width="0.5"/>
-          <line x1="4" y1="0" x2="16" y2="0" stroke="#8B94B0" stroke-width="0.5"/>
-          <polygon points="0,-16 3,-8 -3,-8" fill="#8B94B0"/>
-        </g>
-        <!-- Scale bar -->
-        <g transform="translate(40, 430)">
-          <line x1="0" y1="0" x2="80" y2="0" stroke="#4A5580" stroke-width="1"/>
-          <line x1="0" y1="-4" x2="0" y2="4" stroke="#4A5580" stroke-width="1"/>
-          <line x1="80" y1="-4" x2="80" y2="4" stroke="#4A5580" stroke-width="1"/>
-          <text x="40" y="-7" text-anchor="middle" font-size="9" fill="#4A5580" font-family="IBM Plex Mono">200 km</text>
-        </g>
-      </svg>
-      <div class="map-legend">
-        <div class="legend-item"><span class="legend-dot" style="background:#FF4D4D;box-shadow:0 0 5px rgba(255,77,77,0.5)"></span>Critical incident</div>
-        <div class="legend-item"><span class="legend-dot" style="background:#F59E0B"></span>High severity</div>
-        <div class="legend-item"><span class="legend-dot" style="background:#3B82F6"></span>Medium severity</div>
-        <div class="legend-item"><span class="legend-dot" style="background:#10B981;border-radius:2px;width:9px;height:9px"></span>Unit deployed</div>
-      </div>
-      <div class="map-controls">
-        <div class="map-ctrl-btn"><i class="ti ti-plus"></i></div>
-        <div class="map-ctrl-btn"><i class="ti ti-minus"></i></div>
-        <div class="map-ctrl-btn"><i class="ti ti-current-location"></i></div>
-        <div class="map-ctrl-btn"><i class="ti ti-layers"></i></div>
-      </div>
-    </div>
-    <!-- District status bar -->
-    <div style="background:var(--surface);border-top:1px solid var(--border);padding:12px 16px;display:flex;gap:16px;overflow-x:auto">
-      <div style="font-size:11px;color:var(--text3);font-family:'IBM Plex Mono',monospace;white-space:nowrap;margin-top:2px">PROVINCES:</div>
-      <div onclick="selectDistrict('Bagmati')" style="cursor:pointer;display:flex;align-items:center;gap:6px;white-space:nowrap">
-        <span class="status-badge status-active">ACTIVE</span>
-        <span style="font-size:12px;color:var(--text)">Bagmati</span><span style="font-size:11px;font-family:'IBM Plex Mono',monospace;color:var(--red)">4 inc</span>
-      </div>
-      <div onclick="selectDistrict('Lumbini')" style="cursor:pointer;display:flex;align-items:center;gap:6px;white-space:nowrap">
-        <span class="status-badge status-monitoring">WATCH</span>
-        <span style="font-size:12px;color:var(--text)">Lumbini</span><span style="font-size:11px;font-family:'IBM Plex Mono',monospace;color:var(--amber)">2 inc</span>
-      </div>
-      <div onclick="selectDistrict('Gandaki')" style="cursor:pointer;display:flex;align-items:center;gap:6px;white-space:nowrap">
-        <span class="status-badge status-active">ACTIVE</span>
-        <span style="font-size:12px;color:var(--text)">Gandaki</span><span style="font-size:11px;font-family:'IBM Plex Mono',monospace;color:var(--red)">1 inc</span>
-      </div>
-      <div onclick="selectDistrict('Madhesh')" style="cursor:pointer;display:flex;align-items:center;gap:6px;white-space:nowrap">
-        <span class="status-badge status-monitoring">WATCH</span>
-        <span style="font-size:12px;color:var(--text)">Madhesh</span><span style="font-size:11px;font-family:'IBM Plex Mono',monospace;color:var(--amber)">1 inc</span>
-      </div>
-      <div style="display:flex;align-items:center;gap:6px;white-space:nowrap">
-        <span class="status-badge status-normal">CLEAR</span>
-        <span style="font-size:12px;color:var(--text)">Koshi</span><span style="font-size:11px;font-family:'IBM Plex Mono',monospace;color:var(--text3)">0 inc</span>
-      </div>
-      <div style="display:flex;align-items:center;gap:6px;white-space:nowrap">
-        <span class="status-badge status-normal">CLEAR</span>
-        <span style="font-size:12px;color:var(--text)">Sudurpashchim</span><span style="font-size:11px;font-family:'IBM Plex Mono',monospace;color:var(--text3)">0 inc</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- RIGHT PANEL -->
-  <div class="right-panel">
-    <div class="section-header" style="padding-top:14px">Situation Summary</div>
-    <div class="report-card">
-      <div class="report-title">AI Summary — Nepali <span class="ai-badge">GPT</span></div>
-      <div class="nepali-text" id="nepali-summary">
-        वर्तमान अवस्था: बर्दियामा बाढीका कारण ३ परिवार विस्थापित भएका छन्। कास्कीमा पहिरोको खतरा उच्च छ। काठमाडौंमा प्रदर्शन नियन्त्रणमा छ। कुल ७ सक्रिय घटनाहरू अनुगमनमा छन्।
-      </div>
-      <div class="report-footer">
-        <span>Updated 2 min ago</span>
-        <span id="rpt-time">14:32 NPT</span>
-      </div>
-      <button class="action-btn" onclick="regenerateSummary()"><i class="ti ti-refresh"></i> Regenerate</button>
-    </div>
-    <div id="incident-detail-panel" style="display:none">
-      <div class="section-header">Incident Detail</div>
-      <div id="detail-content" style="padding:0 12px 12px"></div>
-    </div>
-    <div id="default-right-panel">
-      <div class="section-header">Deployed Resources</div>
-      <div id="resource-mini-list"></div>
-      <div style="padding:12px">
-        <button class="action-btn primary" onclick="switchTab('report',document.querySelectorAll('.tab')[2])"><i class="ti ti-file-text"></i> Generate Full Report</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- INCIDENTS TAB -->
-<div id="tab-incidents" style="display:none">
-  <div style="padding:16px;display:grid;grid-template-columns:repeat(4,1fr);gap:12px">
-    <div class="stat-card stat-red"><div class="stat-label">Critical</div><div class="stat-value">2</div><div class="stat-sub">Immediate action</div></div>
-    <div class="stat-card stat-amber"><div class="stat-label">High</div><div class="stat-value">3</div><div class="stat-sub">Close monitoring</div></div>
-    <div class="stat-card stat-blue"><div class="stat-label">Medium</div><div class="stat-value">2</div><div class="stat-sub">Standard response</div></div>
-    <div class="stat-card stat-green"><div class="stat-label">Resolved Today</div><div class="stat-value">12</div><div class="stat-sub">Closed incidents</div></div>
-  </div>
-  <div style="padding:0 16px 16px;display:grid;grid-template-columns:1fr 1fr;gap:12px" id="incident-cards"></div>
-</div>
-
-<!-- REPORT TAB -->
-<div id="tab-report" style="display:none;padding:20px;max-width:800px;margin:0 auto">
-  <button class="generate-btn" onclick="generateReport()"><i class="ti ti-sparkles"></i> Generate AI Situation Report (Nepali)</button>
-  <div id="report-output">
-    <div class="report-section">
-      <div class="rs-title">Operational Overview — आपरेशनल अवलोकन</div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+      /* NEPAL MAP PINS */
+      .map-pin {
+        cursor: pointer;
+        transition: transform 0.15s;
+      }
+      .map-pin:hover {
+        transform: scale(1.2);
+      }
+      .pin-ring {
+        animation: ring-pulse 2s ease-in-out infinite;
+      }
+      @keyframes ring-pulse {
+        0%,
+        100% {
+          opacity: 0.6;
+          r: 14;
+        }
+        50% {
+          opacity: 0.2;
+          r: 20;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="nav">
+      <div class="nav-brand">
+        <div class="nav-logo">SM</div>
         <div>
-          <div style="font-size:12px;color:var(--text3);margin-bottom:6px;font-family:'IBM Plex Mono',monospace">NEPALI SUMMARY</div>
-          <div style="font-size:13px;color:var(--text);line-height:1.8">
-            दिनाङ्क: <strong style="color:var(--amber)">२०८१ असार ११</strong><br>
-            समय: <strong style="color:var(--amber)">दिउँसो ०२:३२</strong><br>
-            सक्रिय घटना: <strong style="color:var(--red)">७</strong><br>
-            कुल खटिएको जनशक्ति: <strong style="color:var(--blue)">४२ अधिकारी</strong><br>
-            उच्च प्राथमिकता क्षेत्र: <strong style="color:var(--red)">बर्दिया, काठमाडौं</strong>
+          <div class="nav-title">SituationalMap NP</div>
+          <div class="nav-subtitle">Nepal Police — Command Operations</div>
+        </div>
+      </div>
+      <div class="nav-right">
+        <div class="live-badge"><span class="live-dot"></span>LIVE</div>
+        <div class="time-badge" id="clock">--:--:--</div>
+        <button class="nav-btn" onclick="openReportForm()">
+          <i class="ti ti-plus"></i> Log Incident
+        </button>
+        <button class="nav-btn"><i class="ti ti-bell"></i></button>
+        <button class="nav-btn"><i class="ti ti-user"></i> DSP Sharma</button>
+      </div>
+    </nav>
+
+    <div class="tabs">
+      <div class="tab active" onclick="switchTab('dashboard', this)">
+        <i class="ti ti-map"></i> Operational Map
+      </div>
+      <div class="tab" onclick="switchTab('incidents', this)">
+        <i class="ti ti-alert-triangle"></i> Incidents
+        <span class="tab-badge">7</span>
+      </div>
+      <div class="tab" onclick="switchTab('report', this)">
+        <i class="ti ti-file-text"></i> Situation Report
+      </div>
+      <div class="tab" onclick="switchTab('resources', this)">
+        <i class="ti ti-users"></i> Resources
+      </div>
+    </div>
+
+    <!-- DASHBOARD TAB -->
+    <div id="tab-dashboard" class="main">
+      <!-- SIDEBAR: Incidents -->
+      <div class="sidebar">
+        <div
+          class="stats-row"
+          style="
+            grid-template-columns: 1fr 1fr;
+            padding: 12px;
+            gap: 8px;
+            border-bottom: 1px solid var(--border);
+          "
+        >
+          <div class="stat-card stat-red" style="padding: 10px 12px">
+            <div class="stat-label">Critical</div>
+            <div class="stat-value">2</div>
+          </div>
+          <div class="stat-card stat-amber">
+            <div class="stat-label">High</div>
+            <div class="stat-value">3</div>
+          </div>
+          <div class="stat-card stat-blue">
+            <div class="stat-label">Active</div>
+            <div class="stat-value">7</div>
+          </div>
+          <div class="stat-card stat-green">
+            <div class="stat-label">Resolved</div>
+            <div class="stat-value">12</div>
           </div>
         </div>
-        <div>
-          <div style="font-size:12px;color:var(--text3);margin-bottom:6px;font-family:'IBM Plex Mono',monospace">COMMAND NOTES</div>
-          <div style="font-size:13px;color:var(--text);line-height:1.8">
-            Bardiya flood situation deteriorating. Additional 2 rescue boats dispatched at 13:45. Kaski landslide risk remains HIGH. KTM protest dispersed peacefully.
+        <div class="section-header">
+          Active Incidents
+          <button class="add-btn" onclick="openReportForm()">
+            <i class="ti ti-plus"></i> Add
+          </button>
+        </div>
+        <div id="incident-list"></div>
+      </div>
+
+      <!-- MAP -->
+      <div class="content" style="display: flex; flex-direction: column">
+        <div class="map-container" style="flex: 1">
+          <svg class="map-svg" viewBox="0 0 680 460" id="mainmap">
+            <!-- Nepal simplified outline -->
+            <defs>
+              <filter id="glow-red">
+                <feGaussianBlur stdDeviation="3" result="blur" />
+                <feComposite in="SourceGraphic" in2="blur" operator="over" />
+              </filter>
+            </defs>
+            <!-- Background -->
+            <rect width="680" height="460" fill="#0E1422" />
+            <!-- Grid lines -->
+            <g stroke="#1A2035" stroke-width="0.5" opacity="0.6">
+              <line x1="0" y1="92" x2="680" y2="92" />
+              <line x1="0" y1="184" x2="680" y2="184" />
+              <line x1="0" y1="276" x2="680" y2="276" />
+              <line x1="0" y1="368" x2="680" y2="368" />
+              <line x1="136" y1="0" x2="136" y2="460" />
+              <line x1="272" y1="0" x2="272" y2="460" />
+              <line x1="408" y1="0" x2="408" y2="460" />
+              <line x1="544" y1="0" x2="544" y2="460" />
+            </g>
+            <!-- Nepal map outline (simplified) -->
+            <path
+              d="M60,180 L80,155 L130,145 L180,130 L240,120 L300,115 L360,118 L420,112 L480,118 L540,125 L600,130 L630,145 L640,165 L620,185 L580,195 L540,210 L500,230 L470,260 L450,290 L430,310 L400,325 L370,330 L340,320 L310,310 L280,315 L250,330 L220,340 L200,325 L170,300 L140,270 L110,240 L80,220 Z"
+              fill="#141B2D"
+              stroke="#2A3560"
+              stroke-width="1.5"
+              opacity="0.9"
+            />
+            <!-- Province regions (simplified) -->
+            <path
+              d="M60,180 L130,145 L180,200 L150,250 L100,240 L80,220 Z"
+              fill="#1A2545"
+              stroke="#2A3560"
+              stroke-width="0.5"
+              opacity="0.7"
+            />
+            <path
+              d="M130,145 L240,120 L280,175 L240,210 L180,200 Z"
+              fill="#1A2545"
+              stroke="#2A3560"
+              stroke-width="0.5"
+              opacity="0.7"
+            />
+            <path
+              d="M240,120 L360,118 L380,175 L340,210 L280,175 Z"
+              fill="#1A2545"
+              stroke="#2A3560"
+              stroke-width="0.5"
+              opacity="0.7"
+            />
+            <path
+              d="M360,118 L480,118 L490,180 L430,215 L380,175 Z"
+              fill="#1A2545"
+              stroke="#2A3560"
+              stroke-width="0.5"
+              opacity="0.7"
+            />
+            <path
+              d="M480,118 L640,145 L640,200 L580,210 L530,215 L490,180 Z"
+              fill="#1A2545"
+              stroke="#2A3560"
+              stroke-width="0.5"
+              opacity="0.7"
+            />
+            <!-- Kathmandu Valley highlight -->
+            <circle
+              cx="320"
+              cy="195"
+              r="22"
+              fill="#1E2B50"
+              stroke="#3B82F6"
+              stroke-width="1"
+              stroke-dasharray="3 2"
+              opacity="0.8"
+            />
+            <text
+              x="320"
+              y="228"
+              text-anchor="middle"
+              font-size="9"
+              fill="#3B82F6"
+              font-family="IBM Plex Mono, monospace"
+              opacity="0.8"
+            >
+              Kathmandu
+            </text>
+            <!-- Province labels -->
+            <text
+              x="115"
+              y="210"
+              text-anchor="middle"
+              font-size="9"
+              fill="#4A5580"
+              font-family="IBM Plex Mono"
+            >
+              Koshi
+            </text>
+            <text
+              x="205"
+              y="180"
+              text-anchor="middle"
+              font-size="9"
+              fill="#4A5580"
+              font-family="IBM Plex Mono"
+            >
+              Madhesh
+            </text>
+            <text
+              x="430"
+              y="170"
+              text-anchor="middle"
+              font-size="9"
+              fill="#4A5580"
+              font-family="IBM Plex Mono"
+            >
+              Gandaki
+            </text>
+            <text
+              x="560"
+              y="175"
+              text-anchor="middle"
+              font-size="9"
+              fill="#4A5580"
+              font-family="IBM Plex Mono"
+            >
+              Karnali
+            </text>
+            <!-- Incident pins -->
+            <!-- Critical: Flood Bardiya -->
+            <g class="map-pin" onclick="selectIncident(0)" id="pin-0">
+              <circle
+                cx="420"
+                cy="270"
+                r="18"
+                fill="rgba(255,77,77,0.08)"
+                class="pin-ring"
+              />
+              <circle
+                cx="420"
+                cy="270"
+                r="10"
+                fill="rgba(255,77,77,0.25)"
+                stroke="none"
+              />
+              <circle
+                cx="420"
+                cy="270"
+                r="6"
+                fill="#FF4D4D"
+                stroke="#fff"
+                stroke-width="1.5"
+              />
+              <text
+                x="420"
+                y="296"
+                text-anchor="middle"
+                font-size="9"
+                fill="#FF8080"
+                font-family="IBM Plex Mono"
+              >
+                Bardiya
+              </text>
+            </g>
+            <!-- Critical: Landslide Kaski -->
+            <g class="map-pin" onclick="selectIncident(1)" id="pin-1">
+              <circle
+                cx="370"
+                cy="225"
+                r="18"
+                fill="rgba(255,77,77,0.08)"
+                class="pin-ring"
+              />
+              <circle
+                cx="370"
+                cy="225"
+                r="10"
+                fill="rgba(255,77,77,0.25)"
+                stroke="none"
+              />
+              <circle
+                cx="370"
+                cy="225"
+                r="6"
+                fill="#FF4D4D"
+                stroke="#fff"
+                stroke-width="1.5"
+              />
+              <text
+                x="370"
+                y="251"
+                text-anchor="middle"
+                font-size="9"
+                fill="#FF8080"
+                font-family="IBM Plex Mono"
+              >
+                Kaski
+              </text>
+            </g>
+            <!-- High: Protest KTM -->
+            <g class="map-pin" onclick="selectIncident(2)" id="pin-2">
+              <circle
+                cx="320"
+                cy="200"
+                r="8"
+                fill="rgba(245,158,11,0.2)"
+                stroke="none"
+              />
+              <circle
+                cx="320"
+                cy="200"
+                r="5"
+                fill="#F59E0B"
+                stroke="#fff"
+                stroke-width="1.5"
+              />
+            </g>
+            <!-- High: Traffic Pokhara -->
+            <g class="map-pin" onclick="selectIncident(3)" id="pin-3">
+              <circle
+                cx="340"
+                cy="218"
+                r="8"
+                fill="rgba(59,130,246,0.2)"
+                stroke="none"
+              />
+              <circle
+                cx="340"
+                cy="218"
+                r="5"
+                fill="#3B82F6"
+                stroke="#fff"
+                stroke-width="1.5"
+              />
+            </g>
+            <!-- Medium: Birgunj -->
+            <g class="map-pin" onclick="selectIncident(4)" id="pin-4">
+              <circle
+                cx="285"
+                cy="295"
+                r="7"
+                fill="rgba(59,130,246,0.2)"
+                stroke="none"
+              />
+              <circle
+                cx="285"
+                cy="295"
+                r="4"
+                fill="#3B82F6"
+                stroke="#fff"
+                stroke-width="1"
+              />
+            </g>
+            <!-- Medium: Butwal -->
+            <g class="map-pin" onclick="selectIncident(5)" id="pin-5">
+              <circle
+                cx="300"
+                cy="280"
+                r="7"
+                fill="rgba(245,158,11,0.2)"
+                stroke="none"
+              />
+              <circle
+                cx="300"
+                cy="280"
+                r="4"
+                fill="#F59E0B"
+                stroke="#fff"
+                stroke-width="1"
+              />
+            </g>
+            <!-- Resources -->
+            <!-- Units -->
+            <g opacity="0.8">
+              <rect
+                x="306"
+                y="188"
+                width="12"
+                height="12"
+                rx="2"
+                fill="#0F1F3D"
+                stroke="#3B82F6"
+                stroke-width="1"
+              />
+              <text
+                x="312"
+                y="198"
+                text-anchor="middle"
+                font-size="7"
+                fill="#3B82F6"
+                font-family="IBM Plex Mono"
+              >
+                U
+              </text>
+            </g>
+            <g opacity="0.8">
+              <rect
+                x="362"
+                y="208"
+                width="12"
+                height="12"
+                rx="2"
+                fill="#0A2A1E"
+                stroke="#10B981"
+                stroke-width="1"
+              />
+              <text
+                x="368"
+                y="218"
+                text-anchor="middle"
+                font-size="7"
+                fill="#10B981"
+                font-family="IBM Plex Mono"
+              >
+                V
+              </text>
+            </g>
+            <g opacity="0.8">
+              <rect
+                x="406"
+                y="255"
+                width="12"
+                height="12"
+                rx="2"
+                fill="#3D1515"
+                stroke="#FF4D4D"
+                stroke-width="1"
+              />
+              <text
+                x="412"
+                y="265"
+                text-anchor="middle"
+                font-size="7"
+                fill="#FF4D4D"
+                font-family="IBM Plex Mono"
+              >
+                V
+              </text>
+            </g>
+            <!-- Compass -->
+            <g transform="translate(636,44)">
+              <circle r="20" fill="#111520" stroke="#2A3248" stroke-width="1" />
+              <text
+                y="-7"
+                text-anchor="middle"
+                font-size="9"
+                fill="#8B94B0"
+                font-family="IBM Plex Mono"
+              >
+                N
+              </text>
+              <line
+                x1="0"
+                y1="-16"
+                x2="0"
+                y2="-4"
+                stroke="#8B94B0"
+                stroke-width="1"
+              />
+              <line
+                x1="0"
+                y1="4"
+                x2="0"
+                y2="16"
+                stroke="#8B94B0"
+                stroke-width="0.5"
+              />
+              <line
+                x1="-16"
+                y1="0"
+                x2="-4"
+                y2="0"
+                stroke="#8B94B0"
+                stroke-width="0.5"
+              />
+              <line
+                x1="4"
+                y1="0"
+                x2="16"
+                y2="0"
+                stroke="#8B94B0"
+                stroke-width="0.5"
+              />
+              <polygon points="0,-16 3,-8 -3,-8" fill="#8B94B0" />
+            </g>
+            <!-- Scale bar -->
+            <g transform="translate(40, 430)">
+              <line
+                x1="0"
+                y1="0"
+                x2="80"
+                y2="0"
+                stroke="#4A5580"
+                stroke-width="1"
+              />
+              <line
+                x1="0"
+                y1="-4"
+                x2="0"
+                y2="4"
+                stroke="#4A5580"
+                stroke-width="1"
+              />
+              <line
+                x1="80"
+                y1="-4"
+                x2="80"
+                y2="4"
+                stroke="#4A5580"
+                stroke-width="1"
+              />
+              <text
+                x="40"
+                y="-7"
+                text-anchor="middle"
+                font-size="9"
+                fill="#4A5580"
+                font-family="IBM Plex Mono"
+              >
+                200 km
+              </text>
+            </g>
+          </svg>
+          <div class="map-legend">
+            <div class="legend-item">
+              <span
+                class="legend-dot"
+                style="
+                  background: #ff4d4d;
+                  box-shadow: 0 0 5px rgba(255, 77, 77, 0.5);
+                "
+              ></span
+              >Critical incident
+            </div>
+            <div class="legend-item">
+              <span class="legend-dot" style="background: #f59e0b"></span>High
+              severity
+            </div>
+            <div class="legend-item">
+              <span class="legend-dot" style="background: #3b82f6"></span>Medium
+              severity
+            </div>
+            <div class="legend-item">
+              <span
+                class="legend-dot"
+                style="
+                  background: #10b981;
+                  border-radius: 2px;
+                  width: 9px;
+                  height: 9px;
+                "
+              ></span
+              >Unit deployed
+            </div>
+          </div>
+          <div class="map-controls">
+            <div class="map-ctrl-btn"><i class="ti ti-plus"></i></div>
+            <div class="map-ctrl-btn"><i class="ti ti-minus"></i></div>
+            <div class="map-ctrl-btn">
+              <i class="ti ti-current-location"></i>
+            </div>
+            <div class="map-ctrl-btn"><i class="ti ti-layers"></i></div>
+          </div>
+        </div>
+        <!-- District status bar -->
+        <div
+          style="
+            background: var(--surface);
+            border-top: 1px solid var(--border);
+            padding: 12px 16px;
+            display: flex;
+            gap: 16px;
+            overflow-x: auto;
+          "
+        >
+          <div
+            style="
+              font-size: 11px;
+              color: var(--text3);
+              font-family: 'IBM Plex Mono', monospace;
+              white-space: nowrap;
+              margin-top: 2px;
+            "
+          >
+            PROVINCES:
+          </div>
+          <div
+            onclick="selectDistrict('Bagmati')"
+            style="
+              cursor: pointer;
+              display: flex;
+              align-items: center;
+              gap: 6px;
+              white-space: nowrap;
+            "
+          >
+            <span class="status-badge status-active">ACTIVE</span>
+            <span style="font-size: 12px; color: var(--text)">Bagmati</span
+            ><span
+              style="
+                font-size: 11px;
+                font-family: 'IBM Plex Mono', monospace;
+                color: var(--red);
+              "
+              >4 inc</span
+            >
+          </div>
+          <div
+            onclick="selectDistrict('Lumbini')"
+            style="
+              cursor: pointer;
+              display: flex;
+              align-items: center;
+              gap: 6px;
+              white-space: nowrap;
+            "
+          >
+            <span class="status-badge status-monitoring">WATCH</span>
+            <span style="font-size: 12px; color: var(--text)">Lumbini</span
+            ><span
+              style="
+                font-size: 11px;
+                font-family: 'IBM Plex Mono', monospace;
+                color: var(--amber);
+              "
+              >2 inc</span
+            >
+          </div>
+          <div
+            onclick="selectDistrict('Gandaki')"
+            style="
+              cursor: pointer;
+              display: flex;
+              align-items: center;
+              gap: 6px;
+              white-space: nowrap;
+            "
+          >
+            <span class="status-badge status-active">ACTIVE</span>
+            <span style="font-size: 12px; color: var(--text)">Gandaki</span
+            ><span
+              style="
+                font-size: 11px;
+                font-family: 'IBM Plex Mono', monospace;
+                color: var(--red);
+              "
+              >1 inc</span
+            >
+          </div>
+          <div
+            onclick="selectDistrict('Madhesh')"
+            style="
+              cursor: pointer;
+              display: flex;
+              align-items: center;
+              gap: 6px;
+              white-space: nowrap;
+            "
+          >
+            <span class="status-badge status-monitoring">WATCH</span>
+            <span style="font-size: 12px; color: var(--text)">Madhesh</span
+            ><span
+              style="
+                font-size: 11px;
+                font-family: 'IBM Plex Mono', monospace;
+                color: var(--amber);
+              "
+              >1 inc</span
+            >
+          </div>
+          <div
+            style="
+              display: flex;
+              align-items: center;
+              gap: 6px;
+              white-space: nowrap;
+            "
+          >
+            <span class="status-badge status-normal">CLEAR</span>
+            <span style="font-size: 12px; color: var(--text)">Koshi</span
+            ><span
+              style="
+                font-size: 11px;
+                font-family: 'IBM Plex Mono', monospace;
+                color: var(--text3);
+              "
+              >0 inc</span
+            >
+          </div>
+          <div
+            style="
+              display: flex;
+              align-items: center;
+              gap: 6px;
+              white-space: nowrap;
+            "
+          >
+            <span class="status-badge status-normal">CLEAR</span>
+            <span style="font-size: 12px; color: var(--text)"
+              >Sudurpashchim</span
+            ><span
+              style="
+                font-size: 11px;
+                font-family: 'IBM Plex Mono', monospace;
+                color: var(--text3);
+              "
+              >0 inc</span
+            >
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT PANEL -->
+      <div class="right-panel">
+        <div class="section-header" style="padding-top: 14px">
+          Situation Summary
+        </div>
+        <div class="report-card">
+          <div class="report-title">
+            AI Summary — Nepali <span class="ai-badge">GPT</span>
+          </div>
+          <div class="nepali-text" id="nepali-summary">
+            वर्तमान अवस्था: बर्दियामा बाढीका कारण ३ परिवार विस्थापित भएका छन्।
+            कास्कीमा पहिरोको खतरा उच्च छ। काठमाडौंमा प्रदर्शन नियन्त्रणमा छ। कुल
+            ७ सक्रिय घटनाहरू अनुगमनमा छन्।
+          </div>
+          <div class="report-footer">
+            <span>Updated 2 min ago</span>
+            <span id="rpt-time">14:32 NPT</span>
+          </div>
+          <button class="action-btn" onclick="regenerateSummary()">
+            <i class="ti ti-refresh"></i> Regenerate
+          </button>
+        </div>
+        <div id="incident-detail-panel" style="display: none">
+          <div class="section-header">Incident Detail</div>
+          <div id="detail-content" style="padding: 0 12px 12px"></div>
+        </div>
+        <div id="default-right-panel">
+          <div class="section-header">Deployed Resources</div>
+          <div id="resource-mini-list"></div>
+          <div style="padding: 12px">
+            <button
+              class="action-btn primary"
+              onclick="
+                switchTab('report', document.querySelectorAll('.tab')[2])
+              "
+            >
+              <i class="ti ti-file-text"></i> Generate Full Report
+            </button>
           </div>
         </div>
       </div>
     </div>
-    <div class="report-section">
-      <div class="rs-title">Activity Timeline</div>
-      <div id="timeline-content"></div>
+
+    <!-- INCIDENTS TAB -->
+    <div id="tab-incidents" style="display: none">
+      <div
+        style="
+          padding: 16px;
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          gap: 12px;
+        "
+      >
+        <div class="stat-card stat-red">
+          <div class="stat-label">Critical</div>
+          <div class="stat-value">2</div>
+          <div class="stat-sub">Immediate action</div>
+        </div>
+        <div class="stat-card stat-amber">
+          <div class="stat-label">High</div>
+          <div class="stat-value">3</div>
+          <div class="stat-sub">Close monitoring</div>
+        </div>
+        <div class="stat-card stat-blue">
+          <div class="stat-label">Medium</div>
+          <div class="stat-value">2</div>
+          <div class="stat-sub">Standard response</div>
+        </div>
+        <div class="stat-card stat-green">
+          <div class="stat-label">Resolved Today</div>
+          <div class="stat-value">12</div>
+          <div class="stat-sub">Closed incidents</div>
+        </div>
+      </div>
+      <div
+        style="
+          padding: 0 16px 16px;
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 12px;
+        "
+        id="incident-cards"
+      ></div>
     </div>
-    <div class="report-section">
-      <div class="rs-title">Resource Deployment Summary</div>
-      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:8px">
-        <div style="background:var(--surface3);border-radius:6px;padding:10px;text-align:center">
-          <div style="font-size:24px;font-weight:700;color:var(--blue);font-family:'Syne',sans-serif">42</div>
-          <div style="font-size:11px;color:var(--text3);font-family:'IBM Plex Mono',monospace">Officers</div>
+
+    <!-- REPORT TAB -->
+    <div
+      id="tab-report"
+      style="display: none; padding: 20px; max-width: 800px; margin: 0 auto"
+    >
+      <button class="generate-btn" onclick="generateReport()">
+        <i class="ti ti-sparkles"></i> Generate AI Situation Report (Nepali)
+      </button>
+      <div id="report-output">
+        <div class="report-section">
+          <div class="rs-title">Operational Overview — आपरेशनल अवलोकन</div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px">
+            <div>
+              <div
+                style="
+                  font-size: 12px;
+                  color: var(--text3);
+                  margin-bottom: 6px;
+                  font-family: 'IBM Plex Mono', monospace;
+                "
+              >
+                NEPALI SUMMARY
+              </div>
+              <div
+                style="font-size: 13px; color: var(--text); line-height: 1.8"
+              >
+                दिनाङ्क:
+                <strong style="color: var(--amber)">२०८१ असार ११</strong><br />
+                समय: <strong style="color: var(--amber)">दिउँसो ०२:३२</strong
+                ><br />
+                सक्रिय घटना: <strong style="color: var(--red)">७</strong><br />
+                कुल खटिएको जनशक्ति:
+                <strong style="color: var(--blue)">४२ अधिकारी</strong><br />
+                उच्च प्राथमिकता क्षेत्र:
+                <strong style="color: var(--red)">बर्दिया, काठमाडौं</strong>
+              </div>
+            </div>
+            <div>
+              <div
+                style="
+                  font-size: 12px;
+                  color: var(--text3);
+                  margin-bottom: 6px;
+                  font-family: 'IBM Plex Mono', monospace;
+                "
+              >
+                COMMAND NOTES
+              </div>
+              <div
+                style="font-size: 13px; color: var(--text); line-height: 1.8"
+              >
+                Bardiya flood situation deteriorating. Additional 2 rescue boats
+                dispatched at 13:45. Kaski landslide risk remains HIGH. KTM
+                protest dispersed peacefully.
+              </div>
+            </div>
+          </div>
         </div>
-        <div style="background:var(--surface3);border-radius:6px;padding:10px;text-align:center">
-          <div style="font-size:24px;font-weight:700;color:var(--green);font-family:'Syne',sans-serif">8</div>
-          <div style="font-size:11px;color:var(--text3);font-family:'IBM Plex Mono',monospace">Vehicles</div>
+        <div class="report-section">
+          <div class="rs-title">Activity Timeline</div>
+          <div id="timeline-content"></div>
         </div>
-        <div style="background:var(--surface3);border-radius:6px;padding:10px;text-align:center">
-          <div style="font-size:24px;font-weight:700;color:var(--amber);font-family:'Syne',sans-serif">3</div>
-          <div style="font-size:11px;color:var(--text3);font-family:'IBM Plex Mono',monospace">Districts</div>
+        <div class="report-section">
+          <div class="rs-title">Resource Deployment Summary</div>
+          <div
+            style="
+              display: grid;
+              grid-template-columns: repeat(3, 1fr);
+              gap: 10px;
+              margin-top: 8px;
+            "
+          >
+            <div
+              style="
+                background: var(--surface3);
+                border-radius: 6px;
+                padding: 10px;
+                text-align: center;
+              "
+            >
+              <div
+                style="
+                  font-size: 24px;
+                  font-weight: 700;
+                  color: var(--blue);
+                  font-family: 'Syne', sans-serif;
+                "
+              >
+                42
+              </div>
+              <div
+                style="
+                  font-size: 11px;
+                  color: var(--text3);
+                  font-family: 'IBM Plex Mono', monospace;
+                "
+              >
+                Officers
+              </div>
+            </div>
+            <div
+              style="
+                background: var(--surface3);
+                border-radius: 6px;
+                padding: 10px;
+                text-align: center;
+              "
+            >
+              <div
+                style="
+                  font-size: 24px;
+                  font-weight: 700;
+                  color: var(--green);
+                  font-family: 'Syne', sans-serif;
+                "
+              >
+                8
+              </div>
+              <div
+                style="
+                  font-size: 11px;
+                  color: var(--text3);
+                  font-family: 'IBM Plex Mono', monospace;
+                "
+              >
+                Vehicles
+              </div>
+            </div>
+            <div
+              style="
+                background: var(--surface3);
+                border-radius: 6px;
+                padding: 10px;
+                text-align: center;
+              "
+            >
+              <div
+                style="
+                  font-size: 24px;
+                  font-weight: 700;
+                  color: var(--amber);
+                  font-family: 'Syne', sans-serif;
+                "
+              >
+                3
+              </div>
+              <div
+                style="
+                  font-size: 11px;
+                  color: var(--text3);
+                  font-family: 'IBM Plex Mono', monospace;
+                "
+              >
+                Districts
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</div>
 
-<!-- RESOURCES TAB -->
-<div id="tab-resources" style="display:none">
-  <div style="padding:16px;display:grid;grid-template-columns:repeat(4,1fr);gap:12px">
-    <div class="stat-card stat-blue"><div class="stat-label">Total Officers</div><div class="stat-value">247</div><div class="stat-sub">On duty</div></div>
-    <div class="stat-card stat-green"><div class="stat-label">Deployed</div><div class="stat-value">42</div><div class="stat-sub">At incidents</div></div>
-    <div class="stat-card stat-amber"><div class="stat-label">Vehicles</div><div class="stat-value">18</div><div class="stat-sub">Fleet active</div></div>
-    <div class="stat-card"><div class="stat-label" style="color:var(--text3)">Available</div><div class="stat-value" style="color:var(--text)">205</div><div class="stat-sub">Ready to deploy</div></div>
-  </div>
-  <div style="padding:0 16px">
-    <div style="font-size:11px;color:var(--text3);font-family:'IBM Plex Mono',monospace;margin-bottom:10px;text-transform:uppercase;letter-spacing:0.5px">Deployed Units</div>
-    <div id="resource-full-list"></div>
-  </div>
-</div>
-
-<!-- REPORT FORM OVERLAY -->
-<div id="report-form-overlay" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:200;display:none;align-items:center;justify-content:center">
-  <div style="background:var(--surface);border:1px solid var(--border);border-radius:12px;width:480px;max-height:90vh;overflow-y:auto">
-    <div style="padding:16px 20px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between">
-      <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:16px">Log New Incident</div>
-      <button onclick="closeReportForm()" style="background:transparent;border:none;color:var(--text3);cursor:pointer;font-size:20px;line-height:1"><i class="ti ti-x"></i></button>
+    <!-- RESOURCES TAB -->
+    <div id="tab-resources" style="display: none">
+      <div
+        style="
+          padding: 16px;
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          gap: 12px;
+        "
+      >
+        <div class="stat-card stat-blue">
+          <div class="stat-label">Total Officers</div>
+          <div class="stat-value">247</div>
+          <div class="stat-sub">On duty</div>
+        </div>
+        <div class="stat-card stat-green">
+          <div class="stat-label">Deployed</div>
+          <div class="stat-value">42</div>
+          <div class="stat-sub">At incidents</div>
+        </div>
+        <div class="stat-card stat-amber">
+          <div class="stat-label">Vehicles</div>
+          <div class="stat-value">18</div>
+          <div class="stat-sub">Fleet active</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label" style="color: var(--text3)">Available</div>
+          <div class="stat-value" style="color: var(--text)">205</div>
+          <div class="stat-sub">Ready to deploy</div>
+        </div>
+      </div>
+      <div style="padding: 0 16px">
+        <div
+          style="
+            font-size: 11px;
+            color: var(--text3);
+            font-family: 'IBM Plex Mono', monospace;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+          "
+        >
+          Deployed Units
+        </div>
+        <div id="resource-full-list"></div>
+      </div>
     </div>
-    <div class="report-form">
-      <div class="form-group">
-        <label class="form-label">Incident Title</label>
-        <input class="form-input" type="text" placeholder="Brief description of incident...">
-      </div>
-      <div class="form-row">
-        <div class="form-group">
-          <label class="form-label">Category</label>
-          <select class="form-select form-input">
-            <option>Disaster / Natural</option>
-            <option>Protest / Civil Unrest</option>
-            <option>Traffic / Road</option>
-            <option>Crime</option>
-            <option>Medical Emergency</option>
-          </select>
+
+    <!-- REPORT FORM OVERLAY -->
+    <div
+      id="report-form-overlay"
+      style="
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.7);
+        z-index: 200;
+        display: none;
+        align-items: center;
+        justify-content: center;
+      "
+    >
+      <div
+        style="
+          background: var(--surface);
+          border: 1px solid var(--border);
+          border-radius: 12px;
+          width: 480px;
+          max-height: 90vh;
+          overflow-y: auto;
+        "
+      >
+        <div
+          style="
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+          "
+        >
+          <div
+            style="
+              font-family: 'Syne', sans-serif;
+              font-weight: 700;
+              font-size: 16px;
+            "
+          >
+            Log New Incident
+          </div>
+          <button
+            onclick="closeReportForm()"
+            style="
+              background: transparent;
+              border: none;
+              color: var(--text3);
+              cursor: pointer;
+              font-size: 20px;
+              line-height: 1;
+            "
+          >
+            <i class="ti ti-x"></i>
+          </button>
         </div>
-        <div class="form-group">
-          <label class="form-label">District</label>
-          <select class="form-select form-input">
-            <option>Kathmandu</option>
-            <option>Bardiya</option>
-            <option>Kaski</option>
-            <option>Rupandehi</option>
-            <option>Morang</option>
-            <option>Sunsari</option>
-          </select>
+        <div class="report-form">
+          <div class="form-group">
+            <label class="form-label">Incident Title</label>
+            <input
+              class="form-input"
+              type="text"
+              placeholder="Brief description of incident..."
+            />
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Category</label>
+              <select class="form-select form-input">
+                <option>Disaster / Natural</option>
+                <option>Protest / Civil Unrest</option>
+                <option>Traffic / Road</option>
+                <option>Crime</option>
+                <option>Medical Emergency</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">District</label>
+              <select class="form-select form-input">
+                <option>Kathmandu</option>
+                <option>Bardiya</option>
+                <option>Kaski</option>
+                <option>Rupandehi</option>
+                <option>Morang</option>
+                <option>Sunsari</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Severity</label>
+            <div class="severity-grid">
+              <div class="sev-option" onclick="setSeverity('critical', this)">
+                Critical
+              </div>
+              <div class="sev-option" onclick="setSeverity('high', this)">
+                High
+              </div>
+              <div
+                class="sev-option selected-medium"
+                onclick="setSeverity('medium', this)"
+              >
+                Medium
+              </div>
+              <div class="sev-option" onclick="setSeverity('low', this)">
+                Low
+              </div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Reporting Officer</label>
+              <input
+                class="form-input"
+                type="text"
+                placeholder="Name / Badge #"
+              />
+            </div>
+            <div class="form-group">
+              <label class="form-label">People Affected</label>
+              <input class="form-input" type="number" placeholder="0" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Details</label>
+            <textarea
+              class="form-textarea form-input"
+              placeholder="Describe the situation, current conditions, resources needed..."
+            ></textarea>
+          </div>
+          <button
+            class="action-btn primary"
+            onclick="submitIncident()"
+            style="margin-top: 4px"
+          >
+            <i class="ti ti-check"></i> Submit Incident Report
+          </button>
         </div>
       </div>
-      <div class="form-group">
-        <label class="form-label">Severity</label>
-        <div class="severity-grid">
-          <div class="sev-option" onclick="setSeverity('critical',this)">Critical</div>
-          <div class="sev-option" onclick="setSeverity('high',this)">High</div>
-          <div class="sev-option selected-medium" onclick="setSeverity('medium',this)">Medium</div>
-          <div class="sev-option" onclick="setSeverity('low',this)">Low</div>
-        </div>
-      </div>
-      <div class="form-row">
-        <div class="form-group">
-          <label class="form-label">Reporting Officer</label>
-          <input class="form-input" type="text" placeholder="Name / Badge #">
-        </div>
-        <div class="form-group">
-          <label class="form-label">People Affected</label>
-          <input class="form-input" type="number" placeholder="0">
-        </div>
-      </div>
-      <div class="form-group">
-        <label class="form-label">Details</label>
-        <textarea class="form-textarea form-input" placeholder="Describe the situation, current conditions, resources needed..."></textarea>
-      </div>
-      <button class="action-btn primary" onclick="submitIncident()" style="margin-top:4px"><i class="ti ti-check"></i> Submit Incident Report</button>
     </div>
-  </div>
-</div>
 
-<script>
-const incidents=[
-  {id:0,title:"Flood: Bardiya District",severity:"critical",category:"disaster",district:"Bardiya",time:"12:18",desc:"Heavy rainfall causing flooding. 3 families displaced near Rajapur area. Road to Thakurdwara blocked.",officers:8,cat_label:"DISASTER",updates:[{user:"SSP",text:"2 rescue boats dispatched. Army coordination requested.",time:"13:45"},{user:"ASI",text:"Families shifted to Rajapur school shelter.",time:"13:22"},{user:"SI",text:"Road blocked at km 12. Alternative route via Gularia.",time:"12:35"}]},
-  {id:1,title:"Landslide Risk: Kaski",severity:"critical",category:"disaster",district:"Kaski",time:"11:45",desc:"High risk of landslide following heavy rain. 2 villages on evacuation alert near Pokhara-Baglung highway.",officers:6,cat_label:"DISASTER",updates:[{user:"DSP",text:"Evacuation order issued for Ghachok and Mardi areas.",time:"12:10"},{user:"SI",text:"Monitoring team deployed at slide-prone zone.",time:"11:55"}]},
-  {id:2,title:"Protest: Ratnapark KTM",severity:"high",category:"protest",district:"Kathmandu",time:"10:30",desc:"Anti-corruption protest at Ratnapark. Approx. 500 participants. Situation calm but monitoring required.",officers:12,cat_label:"PROTEST",updates:[{user:"DIG",text:"Protesters agreed to disperse by 16:00. No arrests.",time:"14:10"},{user:"DSP",text:"Perimeter secured. Crowd cooperative.",time:"11:20"}]},
-  {id:3,title:"Traffic Pile-up: Prithvi Hwy",severity:"high",category:"traffic",district:"Kaski",time:"09:55",desc:"Multi-vehicle accident on Prithvi Highway near Damauli. 3 injured, 2 vehicles blocking both lanes.",officers:4,cat_label:"TRAFFIC",updates:[{user:"SI",text:"Ambulance on scene. Lane partially cleared.",time:"10:40"}]},
-  {id:4,title:"Road Block: Birgunj Border",severity:"medium",category:"traffic",district:"Parsa",time:"08:20",desc:"Vehicle breakdown causing 2km tailback at Birgunj customs. Freight affected.",officers:3,cat_label:"TRAFFIC",updates:[{user:"ASI",text:"Tow truck dispatched, ETA 30 min.",time:"09:05"}]},
-  {id:5,title:"Crowd: Butwal Market",severity:"medium",category:"protest",district:"Rupandehi",time:"13:05",desc:"Market closure protest by traders. ~200 people gathered. No violence reported.",officers:4,cat_label:"PROTEST",updates:[{user:"SI",text:"Meeting with ward chairman arranged.",time:"13:45"}]},
-  {id:6,title:"Fire: Warehouse Bhairahawa",severity:"high",category:"disaster",district:"Rupandehi",time:"14:01",desc:"Warehouse fire reported near Bhairahawa airport industrial zone. Fire brigade alerted.",officers:5,cat_label:"DISASTER",updates:[{user:"DSP",text:"Fire brigade en route. Area cordoned.",time:"14:08"}]}
-];
+    <script>
+      const incidents = [
+        {
+          id: 0,
+          title: 'Flood: Bardiya District',
+          severity: 'critical',
+          category: 'disaster',
+          district: 'Bardiya',
+          time: '12:18',
+          desc: 'Heavy rainfall causing flooding. 3 families displaced near Rajapur area. Road to Thakurdwara blocked.',
+          officers: 8,
+          cat_label: 'DISASTER',
+          updates: [
+            {
+              user: 'SSP',
+              text: '2 rescue boats dispatched. Army coordination requested.',
+              time: '13:45',
+            },
+            {
+              user: 'ASI',
+              text: 'Families shifted to Rajapur school shelter.',
+              time: '13:22',
+            },
+            {
+              user: 'SI',
+              text: 'Road blocked at km 12. Alternative route via Gularia.',
+              time: '12:35',
+            },
+          ],
+        },
+        {
+          id: 1,
+          title: 'Landslide Risk: Kaski',
+          severity: 'critical',
+          category: 'disaster',
+          district: 'Kaski',
+          time: '11:45',
+          desc: 'High risk of landslide following heavy rain. 2 villages on evacuation alert near Pokhara-Baglung highway.',
+          officers: 6,
+          cat_label: 'DISASTER',
+          updates: [
+            {
+              user: 'DSP',
+              text: 'Evacuation order issued for Ghachok and Mardi areas.',
+              time: '12:10',
+            },
+            {
+              user: 'SI',
+              text: 'Monitoring team deployed at slide-prone zone.',
+              time: '11:55',
+            },
+          ],
+        },
+        {
+          id: 2,
+          title: 'Protest: Ratnapark KTM',
+          severity: 'high',
+          category: 'protest',
+          district: 'Kathmandu',
+          time: '10:30',
+          desc: 'Anti-corruption protest at Ratnapark. Approx. 500 participants. Situation calm but monitoring required.',
+          officers: 12,
+          cat_label: 'PROTEST',
+          updates: [
+            {
+              user: 'DIG',
+              text: 'Protesters agreed to disperse by 16:00. No arrests.',
+              time: '14:10',
+            },
+            {
+              user: 'DSP',
+              text: 'Perimeter secured. Crowd cooperative.',
+              time: '11:20',
+            },
+          ],
+        },
+        {
+          id: 3,
+          title: 'Traffic Pile-up: Prithvi Hwy',
+          severity: 'high',
+          category: 'traffic',
+          district: 'Kaski',
+          time: '09:55',
+          desc: 'Multi-vehicle accident on Prithvi Highway near Damauli. 3 injured, 2 vehicles blocking both lanes.',
+          officers: 4,
+          cat_label: 'TRAFFIC',
+          updates: [
+            {
+              user: 'SI',
+              text: 'Ambulance on scene. Lane partially cleared.',
+              time: '10:40',
+            },
+          ],
+        },
+        {
+          id: 4,
+          title: 'Road Block: Birgunj Border',
+          severity: 'medium',
+          category: 'traffic',
+          district: 'Parsa',
+          time: '08:20',
+          desc: 'Vehicle breakdown causing 2km tailback at Birgunj customs. Freight affected.',
+          officers: 3,
+          cat_label: 'TRAFFIC',
+          updates: [
+            {
+              user: 'ASI',
+              text: 'Tow truck dispatched, ETA 30 min.',
+              time: '09:05',
+            },
+          ],
+        },
+        {
+          id: 5,
+          title: 'Crowd: Butwal Market',
+          severity: 'medium',
+          category: 'protest',
+          district: 'Rupandehi',
+          time: '13:05',
+          desc: 'Market closure protest by traders. ~200 people gathered. No violence reported.',
+          officers: 4,
+          cat_label: 'PROTEST',
+          updates: [
+            {
+              user: 'SI',
+              text: 'Meeting with ward chairman arranged.',
+              time: '13:45',
+            },
+          ],
+        },
+        {
+          id: 6,
+          title: 'Fire: Warehouse Bhairahawa',
+          severity: 'high',
+          category: 'disaster',
+          district: 'Rupandehi',
+          time: '14:01',
+          desc: 'Warehouse fire reported near Bhairahawa airport industrial zone. Fire brigade alerted.',
+          officers: 5,
+          cat_label: 'DISASTER',
+          updates: [
+            {
+              user: 'DSP',
+              text: 'Fire brigade en route. Area cordoned.',
+              time: '14:08',
+            },
+          ],
+        },
+      ]
 
-const resources=[
-  {name:"Alpha Unit — Bardiya",type:"unit",officers:8,vehicle:"2x Jeep, 1x Rescue Boat",status:"deployed",color:"#FF4D4D",bg:"#3D1515"},
-  {name:"Bravo Unit — Kaski",type:"unit",officers:6,vehicle:"2x Jeep, 1x Ambulance",status:"deployed",color:"#FF4D4D",bg:"#3D1515"},
-  {name:"Delta Unit — KTM",type:"unit",officers:12,vehicle:"4x Jeep, Riot gear",status:"standby",color:"#F59E0B",bg:"#3D2800"},
-  {name:"Echo Unit — Pokhara",type:"unit",officers:5,vehicle:"2x Patrol Car",status:"deployed",color:"#FF4D4D",bg:"#3D1515"},
-  {name:"Foxtrot — Reserve",type:"unit",officers:11,vehicle:"3x Jeep, 1x Van",status:"available",color:"#10B981",bg:"#0A2A1E"},
-];
+      const resources = [
+        {
+          name: 'Alpha Unit — Bardiya',
+          type: 'unit',
+          officers: 8,
+          vehicle: '2x Jeep, 1x Rescue Boat',
+          status: 'deployed',
+          color: '#FF4D4D',
+          bg: '#3D1515',
+        },
+        {
+          name: 'Bravo Unit — Kaski',
+          type: 'unit',
+          officers: 6,
+          vehicle: '2x Jeep, 1x Ambulance',
+          status: 'deployed',
+          color: '#FF4D4D',
+          bg: '#3D1515',
+        },
+        {
+          name: 'Delta Unit — KTM',
+          type: 'unit',
+          officers: 12,
+          vehicle: '4x Jeep, Riot gear',
+          status: 'standby',
+          color: '#F59E0B',
+          bg: '#3D2800',
+        },
+        {
+          name: 'Echo Unit — Pokhara',
+          type: 'unit',
+          officers: 5,
+          vehicle: '2x Patrol Car',
+          status: 'deployed',
+          color: '#FF4D4D',
+          bg: '#3D1515',
+        },
+        {
+          name: 'Foxtrot — Reserve',
+          type: 'unit',
+          officers: 11,
+          vehicle: '3x Jeep, 1x Van',
+          status: 'available',
+          color: '#10B981',
+          bg: '#0A2A1E',
+        },
+      ]
 
-function renderIncidentList(){
-  const el=document.getElementById('incident-list');
-  el.innerHTML=incidents.map((inc,i)=>`
+      function renderIncidentList() {
+        const el = document.getElementById('incident-list')
+        el.innerHTML = incidents
+          .map(
+            (inc, i) => `
     <div class="incident-item" id="iitem-${i}" onclick="selectIncident(${i})">
       <span class="severity-dot severity-${inc.severity}"></span>
       <div style="flex:1;min-width:0">
@@ -590,14 +2246,18 @@ function renderIncidentList(){
         </div>
       </div>
     </div>
-  `).join('');
-}
+  `,
+          )
+          .join('')
+      }
 
-function renderIncidentCards(){
-  const el=document.getElementById('incident-cards');
-  if(!el)return;
-  el.innerHTML=incidents.map(inc=>`
-    <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:14px;border-left:3px solid ${inc.severity==='critical'?'var(--red)':inc.severity==='high'?'var(--amber)':inc.severity==='medium'?'var(--blue)':'var(--green)'}">
+      function renderIncidentCards() {
+        const el = document.getElementById('incident-cards')
+        if (!el) return
+        el.innerHTML = incidents
+          .map(
+            (inc) => `
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:14px;border-left:3px solid ${inc.severity === 'critical' ? 'var(--red)' : inc.severity === 'high' ? 'var(--amber)' : inc.severity === 'medium' ? 'var(--blue)' : 'var(--green)'}">
       <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:8px">
         <div style="font-size:13px;font-weight:500;color:var(--text)">${inc.title}</div>
         <span class="category-tag cat-${inc.category}">${inc.cat_label}</span>
@@ -609,13 +2269,18 @@ function renderIncidentCards(){
         <span><i class="ti ti-users"></i> ${inc.officers} officers</span>
       </div>
     </div>
-  `).join('');
-}
+  `,
+          )
+          .join('')
+      }
 
-function renderResourceMini(){
-  const el=document.getElementById('resource-mini-list');
-  if(!el)return;
-  el.innerHTML=resources.slice(0,4).map(r=>`
+      function renderResourceMini() {
+        const el = document.getElementById('resource-mini-list')
+        if (!el) return
+        el.innerHTML = resources
+          .slice(0, 4)
+          .map(
+            (r) => `
     <div class="resource-item">
       <div class="resource-icon" style="background:${r.bg};color:${r.color}"><i class="ti ti-shield"></i></div>
       <div>
@@ -624,14 +2289,18 @@ function renderResourceMini(){
       </div>
       <span class="resource-status" style="background:${r.bg};color:${r.color};border:1px solid ${r.color}30">${r.status.toUpperCase()}</span>
     </div>
-  `).join('');
-}
+  `,
+          )
+          .join('')
+      }
 
-function renderResourceFull(){
-  const el=document.getElementById('resource-full-list');
-  if(!el)return;
-  el.innerHTML=`<div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;overflow:hidden">
-  ${resources.map(r=>`
+      function renderResourceFull() {
+        const el = document.getElementById('resource-full-list')
+        if (!el) return
+        el.innerHTML = `<div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;overflow:hidden">
+  ${resources
+    .map(
+      (r) => `
     <div class="resource-item" style="padding:12px 16px">
       <div class="resource-icon" style="background:${r.bg};color:${r.color};width:36px;height:36px"><i class="ti ti-shield"></i></div>
       <div style="flex:1">
@@ -640,44 +2309,84 @@ function renderResourceFull(){
       </div>
       <span class="resource-status" style="background:${r.bg};color:${r.color};border:1px solid ${r.color}30;font-size:11px;padding:3px 8px">${r.status.toUpperCase()}</span>
     </div>
-  `).join('')}
-  </div>`;
-}
+  `,
+    )
+    .join('')}
+  </div>`
+      }
 
-function renderTimeline(){
-  const el=document.getElementById('timeline-content');
-  if(!el)return;
-  const tl=[
-    {time:"14:08",text:"Fire reported in Bhairahawa warehouse — Fire brigade alerted",col:"#FF4D4D"},
-    {time:"14:01",text:"New incident logged: Bhairahawa industrial fire",col:"#F59E0B"},
-    {time:"13:45",text:"Rescue boats dispatched to Bardiya flood zone",col:"#FF4D4D"},
-    {time:"13:22",text:"Displaced families shifted to Rajapur school shelter",col:"#10B981"},
-    {time:"13:05",text:"Crowd monitoring started: Butwal market protest",col:"#F59E0B"},
-    {time:"12:10",text:"Evacuation order: Ghachok and Mardi areas (Kaski)",col:"#FF4D4D"},
-    {time:"11:45",text:"Landslide risk elevated to CRITICAL in Kaski",col:"#FF4D4D"},
-    {time:"10:30",text:"Protest logged: Ratnapark, ~500 participants",col:"#F59E0B"},
-  ];
-  el.innerHTML=tl.map(t=>`
+      function renderTimeline() {
+        const el = document.getElementById('timeline-content')
+        if (!el) return
+        const tl = [
+          {
+            time: '14:08',
+            text: 'Fire reported in Bhairahawa warehouse — Fire brigade alerted',
+            col: '#FF4D4D',
+          },
+          {
+            time: '14:01',
+            text: 'New incident logged: Bhairahawa industrial fire',
+            col: '#F59E0B',
+          },
+          {
+            time: '13:45',
+            text: 'Rescue boats dispatched to Bardiya flood zone',
+            col: '#FF4D4D',
+          },
+          {
+            time: '13:22',
+            text: 'Displaced families shifted to Rajapur school shelter',
+            col: '#10B981',
+          },
+          {
+            time: '13:05',
+            text: 'Crowd monitoring started: Butwal market protest',
+            col: '#F59E0B',
+          },
+          {
+            time: '12:10',
+            text: 'Evacuation order: Ghachok and Mardi areas (Kaski)',
+            col: '#FF4D4D',
+          },
+          {
+            time: '11:45',
+            text: 'Landslide risk elevated to CRITICAL in Kaski',
+            col: '#FF4D4D',
+          },
+          {
+            time: '10:30',
+            text: 'Protest logged: Ratnapark, ~500 participants',
+            col: '#F59E0B',
+          },
+        ]
+        el.innerHTML = tl
+          .map(
+            (t) => `
     <div class="timeline-item">
       <div class="tl-dot" style="background:${t.col}"></div>
       <div class="tl-time">${t.time}</div>
       <div class="tl-text">${t.text}</div>
     </div>
-  `).join('');
-}
+  `,
+          )
+          .join('')
+      }
 
-function selectIncident(i){
-  document.querySelectorAll('.incident-item').forEach(el=>el.classList.remove('active'));
-  const iitem=document.getElementById('iitem-'+i);
-  if(iitem)iitem.classList.add('active');
-  const inc=incidents[i];
-  const panel=document.getElementById('incident-detail-panel');
-  const content=document.getElementById('detail-content');
-  const defaultPanel=document.getElementById('default-right-panel');
-  if(panel&&content){
-    panel.style.display='block';
-    if(defaultPanel)defaultPanel.style.display='none';
-    content.innerHTML=`
+      function selectIncident(i) {
+        document
+          .querySelectorAll('.incident-item')
+          .forEach((el) => el.classList.remove('active'))
+        const iitem = document.getElementById('iitem-' + i)
+        if (iitem) iitem.classList.add('active')
+        const inc = incidents[i]
+        const panel = document.getElementById('incident-detail-panel')
+        const content = document.getElementById('detail-content')
+        const defaultPanel = document.getElementById('default-right-panel')
+        if (panel && content) {
+          panel.style.display = 'block'
+          if (defaultPanel) defaultPanel.style.display = 'none'
+          content.innerHTML = `
       <div style="margin-bottom:10px">
         <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
           <span class="severity-dot severity-${inc.severity}" style="width:10px;height:10px"></span>
@@ -696,7 +2405,9 @@ function selectIncident(i){
         <div style="font-size:11px;color:var(--text3)">Updates<br><span style="color:var(--text);font-size:12px">${inc.updates.length}</span></div>
       </div>
       <div style="font-size:11px;color:var(--text3);font-family:'IBM Plex Mono',monospace;margin-bottom:8px;text-transform:uppercase;letter-spacing:0.5px">Field Updates</div>
-      ${inc.updates.map(u=>`
+      ${inc.updates
+        .map(
+          (u) => `
         <div style="display:flex;gap:8px;margin-bottom:8px">
           <div style="width:22px;height:22px;border-radius:50%;background:var(--surface3);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:9px;color:var(--text3);flex-shrink:0;font-family:'IBM Plex Mono',monospace;font-weight:600">${u.user}</div>
           <div>
@@ -704,85 +2415,113 @@ function selectIncident(i){
             <div style="font-size:10px;color:var(--text3);font-family:'IBM Plex Mono',monospace">${u.time}</div>
           </div>
         </div>
-      `).join('')}
+      `,
+        )
+        .join('')}
       <button class="action-btn" onclick="closeDetail()" style="margin-top:4px"><i class="ti ti-arrow-left"></i> Back</button>
-    `;
-  }
-}
+    `
+        }
+      }
 
-function closeDetail(){
-  const panel=document.getElementById('incident-detail-panel');
-  const defaultPanel=document.getElementById('default-right-panel');
-  if(panel)panel.style.display='none';
-  if(defaultPanel)defaultPanel.style.display='block';
-  document.querySelectorAll('.incident-item').forEach(el=>el.classList.remove('active'));
-}
+      function closeDetail() {
+        const panel = document.getElementById('incident-detail-panel')
+        const defaultPanel = document.getElementById('default-right-panel')
+        if (panel) panel.style.display = 'none'
+        if (defaultPanel) defaultPanel.style.display = 'block'
+        document
+          .querySelectorAll('.incident-item')
+          .forEach((el) => el.classList.remove('active'))
+      }
 
-function switchTab(name,el){
-  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
-  if(el)el.classList.add('active');
-  ['dashboard','incidents','report','resources'].forEach(t=>{
-    const panel=document.getElementById('tab-'+t);
-    if(panel)panel.style.display=t===name?(t==='dashboard'?'flex':'block'):'none';
-  });
-  if(name==='incidents')renderIncidentCards();
-  if(name==='resources'){renderResourceFull();}
-  if(name==='report')renderTimeline();
-}
+      function switchTab(name, el) {
+        document
+          .querySelectorAll('.tab')
+          .forEach((t) => t.classList.remove('active'))
+        if (el) el.classList.add('active')
+        ;['dashboard', 'incidents', 'report', 'resources'].forEach((t) => {
+          const panel = document.getElementById('tab-' + t)
+          if (panel)
+            panel.style.display =
+              t === name ? (t === 'dashboard' ? 'flex' : 'block') : 'none'
+        })
+        if (name === 'incidents') renderIncidentCards()
+        if (name === 'resources') {
+          renderResourceFull()
+        }
+        if (name === 'report') renderTimeline()
+      }
 
-function openReportForm(){
-  document.getElementById('report-form-overlay').style.display='flex';
-}
-function closeReportForm(){
-  document.getElementById('report-form-overlay').style.display='none';
-}
-function setSeverity(sev,el){
-  document.querySelectorAll('.sev-option').forEach(e=>e.className='sev-option');
-  el.className='sev-option selected-'+sev;
-}
-function submitIncident(){
-  closeReportForm();
-  const badge=document.querySelector('.tab-badge');
-  if(badge)badge.textContent=parseInt(badge.textContent)+1;
-}
+      function openReportForm() {
+        document.getElementById('report-form-overlay').style.display = 'flex'
+      }
+      function closeReportForm() {
+        document.getElementById('report-form-overlay').style.display = 'none'
+      }
+      function setSeverity(sev, el) {
+        document
+          .querySelectorAll('.sev-option')
+          .forEach((e) => (e.className = 'sev-option'))
+        el.className = 'sev-option selected-' + sev
+      }
+      function submitIncident() {
+        closeReportForm()
+        const badge = document.querySelector('.tab-badge')
+        if (badge) badge.textContent = parseInt(badge.textContent) + 1
+      }
 
-const nepaliSummaries=[
-  "वर्तमान अवस्था: बर्दियामा बाढीका कारण ३ परिवार विस्थापित भएका छन्। कास्कीमा पहिरोको खतरा उच्च छ। काठमाडौंमा प्रदर्शन नियन्त्रणमा छ। कुल ७ सक्रिय घटनाहरू अनुगमनमा छन्।",
-  "अपडेट: भैरहवामा गोदाम आगलागी भएको छ — दमकल सूचित गरिएको छ। बर्दियामा थप उद्धार डुङ्गाहरू पठाइएका छन्। बुटवलमा व्यापारीहरूको विरोध शान्तिपूर्ण रूपमा जारी छ।",
-  "प्राथमिकता: बर्दिया र कास्कीलाई तत्काल स्रोत आवश्यक छ। काठमाडौं प्रदर्शन बिहान ४ बजेसम्म समाप्त हुने अपेक्षा छ। समग्र स्थिति नियन्त्रणमा।"
-];
-let summaryIdx=0;
-function regenerateSummary(){
-  summaryIdx=(summaryIdx+1)%nepaliSummaries.length;
-  const el=document.getElementById('nepali-summary');
-  if(el){el.style.opacity='0';setTimeout(()=>{el.textContent=nepaliSummaries[summaryIdx];el.style.opacity='1';el.style.transition='opacity 0.4s'},200);}
-}
-function generateReport(){
-  const btn=document.querySelector('.generate-btn');
-  if(btn){btn.innerHTML='<i class="ti ti-loader-2" style="animation:spin 1s linear infinite"></i> Generating...';
-  setTimeout(()=>{btn.innerHTML='<i class="ti ti-check"></i> Report Ready';setTimeout(()=>{btn.innerHTML='<i class="ti ti-sparkles"></i> Generate AI Situation Report (Nepali)'},2000)},1800);}
-}
+      const nepaliSummaries = [
+        'वर्तमान अवस्था: बर्दियामा बाढीका कारण ३ परिवार विस्थापित भएका छन्। कास्कीमा पहिरोको खतरा उच्च छ। काठमाडौंमा प्रदर्शन नियन्त्रणमा छ। कुल ७ सक्रिय घटनाहरू अनुगमनमा छन्।',
+        'अपडेट: भैरहवामा गोदाम आगलागी भएको छ — दमकल सूचित गरिएको छ। बर्दियामा थप उद्धार डुङ्गाहरू पठाइएका छन्। बुटवलमा व्यापारीहरूको विरोध शान्तिपूर्ण रूपमा जारी छ।',
+        'प्राथमिकता: बर्दिया र कास्कीलाई तत्काल स्रोत आवश्यक छ। काठमाडौं प्रदर्शन बिहान ४ बजेसम्म समाप्त हुने अपेक्षा छ। समग्र स्थिति नियन्त्रणमा।',
+      ]
+      let summaryIdx = 0
+      function regenerateSummary() {
+        summaryIdx = (summaryIdx + 1) % nepaliSummaries.length
+        const el = document.getElementById('nepali-summary')
+        if (el) {
+          el.style.opacity = '0'
+          setTimeout(() => {
+            el.textContent = nepaliSummaries[summaryIdx]
+            el.style.opacity = '1'
+            el.style.transition = 'opacity 0.4s'
+          }, 200)
+        }
+      }
+      function generateReport() {
+        const btn = document.querySelector('.generate-btn')
+        if (btn) {
+          btn.innerHTML =
+            '<i class="ti ti-loader-2" style="animation:spin 1s linear infinite"></i> Generating...'
+          setTimeout(() => {
+            btn.innerHTML = '<i class="ti ti-check"></i> Report Ready'
+            setTimeout(() => {
+              btn.innerHTML =
+                '<i class="ti ti-sparkles"></i> Generate AI Situation Report (Nepali)'
+            }, 2000)
+          }, 1800)
+        }
+      }
 
-function updateClock(){
-  const now=new Date();
-  const h=String(now.getHours()).padStart(2,'0');
-  const m=String(now.getMinutes()).padStart(2,'0');
-  const s=String(now.getSeconds()).padStart(2,'0');
-  const el=document.getElementById('clock');
-  if(el)el.textContent=h+':'+m+':'+s+' NPT';
-  const rt=document.getElementById('rpt-time');
-  if(rt)rt.textContent=h+':'+m+' NPT';
-}
+      function updateClock() {
+        const now = new Date()
+        const h = String(now.getHours()).padStart(2, '0')
+        const m = String(now.getMinutes()).padStart(2, '0')
+        const s = String(now.getSeconds()).padStart(2, '0')
+        const el = document.getElementById('clock')
+        if (el) el.textContent = h + ':' + m + ':' + s + ' NPT'
+        const rt = document.getElementById('rpt-time')
+        if (rt) rt.textContent = h + ':' + m + ' NPT'
+      }
 
-const style=document.createElement('style');
-style.textContent='@keyframes spin{to{transform:rotate(360deg)}}';
-document.head.appendChild(style);
+      const style = document.createElement('style')
+      style.textContent = '@keyframes spin{to{transform:rotate(360deg)}}'
+      document.head.appendChild(style)
 
-renderIncidentList();
-renderResourceMini();
-renderTimeline();
-updateClock();
-setInterval(updateClock,1000);
-</script>
-</body>
+      renderIncidentList()
+      renderResourceMini()
+      renderTimeline()
+      updateClock()
+      setInterval(updateClock, 1000)
+    </script>
+  </body>
 </html>

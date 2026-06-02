@@ -34,6 +34,7 @@ DATABASE_URL="postgresql://USER:PASSWORD@HOST:PORT/DATABASE?sslmode=require"
 ## Available Scripts
 
 **Development**
+
 ```bash
 bun dev              # Start dev server
 bun run build        # Build for production
@@ -41,6 +42,7 @@ bun run preview      # Preview production build
 ```
 
 **Database**
+
 ```bash
 bun run db:generate  # Generate Prisma Client
 bun run db:migrate   # Run migrations
@@ -50,6 +52,7 @@ bun run db:reset     # Reset database (⚠️ deletes all data)
 ```
 
 **Code Quality**
+
 ```bash
 bun run lint         # Lint code
 bun run format       # Format code
@@ -85,16 +88,19 @@ prisma/
 ## Troubleshooting
 
 **Database connection error**
+
 ```bash
 bun run db:check
 ```
 
 **Type errors**
+
 ```bash
 bun run db:generate
 ```
 
 **Port in use**
+
 ```bash
 PORT=3001 bun dev
 ```
