@@ -1,0 +1,28 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="512" height="512" rx="96" fill="#003893"/>
+
+  <!-- Shield outline -->
+  <path d="M256 96L144 144V256C144 339.2 196.8 384 256 432C315.2 384 368 339.2 368 256V144L256 96Z"
+        fill="#0A0E1A" stroke="#4F6EBD" stroke-width="8"/>
+
+  <!-- Map marker icon -->
+  <path d="M256 192C238.3 192 224 206.3 224 224C224 241.7 238.3 256 256 256C273.7 256 288 241.7 288 224C288 206.3 273.7 192 256 192Z"
+        fill="#3B82F6"/>
+  <path d="M256 176C229.5 176 208 197.5 208 224C208 254.9 244.7 300.5 253.2 310.4C254.7 312.2 257.3 312.2 258.8 310.4C267.3 300.5 304 254.9 304 224C304 197.5 282.5 176 256 176ZM256 240C247.2 240 240 232.8 240 224C240 215.2 247.2 208 256 208C264.8 208 272 215.2 272 224C272 232.8 264.8 240 256 240Z"
+        fill="#60A5FA"/>
+
+  <!-- Radio waves -->
+  <path d="M216 280C216 280 206 270 206 256C206 242 216 232 216 232"
+        stroke="#F59E0B" stroke-width="6" stroke-linecap="round" fill="none"/>
+  <path d="M296 232C296 232 306 242 306 256C306 270 296 280 296 280"
+        stroke="#F59E0B" stroke-width="6" stroke-linecap="round" fill="none"/>
+
+  <!-- Badge star -->
+  <path d="M256 340L264 360L284 364L270 378L274 398L256 388L238 398L242 378L228 364L248 360L256 340Z"
+        fill="#FFD700" stroke="#F59E0B" stroke-width="2"/>
+
+  <!-- "NP" text -->
+  <text x="256" y="180" font-family="Arial, sans-serif" font-size="32" font-weight="bold"
+        fill="#E8EAF0" text-anchor="middle">NP</text>
+</svg>

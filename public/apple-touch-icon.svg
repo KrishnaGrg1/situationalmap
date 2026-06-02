@@ -1,0 +1,24 @@
+<svg width="180" height="180" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="180" height="180" fill="#003893"/>
+  
+  <!-- Shield -->
+  <path d="M90 40L58 54V90C58 119 73 135 90 152C107 135 122 119 122 90V54L90 40Z"
+        fill="#0A0E1A" stroke="#4F6EBD" stroke-width="3"/>
+  
+  <!-- Map marker -->
+  <path d="M90 75C83.4 75 78 80.4 78 87C78 93.6 83.4 99 90 99C96.6 99 102 93.6 102 87C102 80.4 96.6 75 90 75Z"
+        fill="#3B82F6"/>
+  <path d="M90 66C79.5 66 71 74.5 71 85C71 98 86 112 88.7 115.1C89.4 115.9 90.6 115.9 91.3 115.1C94 112 109 98 109 85C109 74.5 100.5 66 90 66ZM90 93C86.1 93 83 89.9 83 86C83 82.1 86.1 79 90 79C93.9 79 97 82.1 97 86C97 89.9 93.9 93 90 93Z"
+        fill="#60A5FA"/>
+  
+  <!-- Radio waves -->
+  <path d="M72 103C72 103 67 98 67 87C67 76 72 71 72 71"
+        stroke="#F59E0B" stroke-width="3" stroke-linecap="round" fill="none"/>
+  <path d="M108 71C108 71 113 76 113 87C113 98 108 103 108 103"
+        stroke="#F59E0B" stroke-width="3" stroke-linecap="round" fill="none"/>
+  
+  <!-- Badge star -->
+  <path d="M90 125L93 133L102 135L96 141L98 150L90 145L82 150L84 141L78 135L87 133L90 125Z"
+        fill="#FFD700" stroke="#F59E0B" stroke-width="1"/>
+</svg>

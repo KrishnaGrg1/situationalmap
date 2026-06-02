@@ -1,0 +1,35 @@
+<svg width="200" height="48" viewBox="0 0 200 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Shield Icon -->
+  <path d="M18 8L10 11V20C10 26 14 29 18 34C22 29 26 26 26 20V11L18 8Z"
+        fill="#003893" stroke="#4F6EBD" stroke-width="1.5"/>
+
+  <!-- Map marker in shield -->
+  <circle cx="18" cy="19" r="2" fill="#60A5FA"/>
+  <path d="M18 15C15.8 15 14 16.8 14 19C14 21.8 17.5 25 18 25.5C18.5 25 22 21.8 22 19C22 16.8 20.2 15 18 15Z"
+        fill="#3B82F6" opacity="0.8"/>
+
+  <!-- Text: "SituationalMap" -->
+  <text x="35" y="20" font-family="Syne, Arial, sans-serif" font-size="14" font-weight="700"
+        fill="#E8EAF0" letter-spacing="-0.02em">
+    SituationalMap
+  </text>
+
+  <!-- Text: "NP" with emphasis -->
+  <text x="35" y="34" font-family="Syne, Arial, sans-serif" font-size="16" font-weight="800"
+        fill="#3B82F6" letter-spacing="0.05em">
+    NP
+  </text>
+
+  <!-- Subtitle -->
+  <text x="54" y="34" font-family="IBM Plex Mono, monospace" font-size="9" font-weight="400"
+        fill="#5A6480" letter-spacing="0.05em">
+    Nepal Police — Command Operations
+  </text>
+
+  <!-- Radio wave indicator (optional decorative element) -->
+  <circle cx="192" cy="24" r="3" fill="#10B981" opacity="0.3">
+    <animate attributeName="r" values="3;6;3" dur="2s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.6;0;0.6" dur="2s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="192" cy="24" r="2" fill="#10B981"/>
+</svg>

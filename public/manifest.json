@@ -1,0 +1,24 @@
+{
+  "name": "SituationalMap NP - Nepal Police Command Operations",
+  "short_name": "SituationalMap NP",
+  "description": "Real-time incident tracking and resource management for Nepal Police operations",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0A0E1A",
+  "theme_color": "#003893",
+  "orientation": "any",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/favicon.svg",
+      "sizes": "32x32",
+      "type": "image/svg+xml"
+    }
+  ],
+  "categories": ["utilities", "government", "productivity"]
+}

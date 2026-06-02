@@ -1,0 +1,117 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider     = "prisma-client"
+  output       = "../src/generated/prisma"
+  moduleFormat = "cjs"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Incident {
+  id             Int              @id @default(autoincrement())
+  title          String
+  severity       IncidentSeverity
+  category       IncidentCategory
+  district       String
+  time           String
+  description    String           @db.Text
+  officers       Int
+  peopleAffected Int
+  latitude       Float
+  longitude      Float
+  status         IncidentStatus   @default(ACTIVE)
+  createdAt      DateTime         @default(now())
+  updatedAt      DateTime         @updatedAt
+
+  updates   IncidentUpdate[]
+  resources Resource[]
+
+  @@index([severity])
+  @@index([category])
+  @@index([district])
+  @@index([status])
+}
+
+model IncidentUpdate {
+  id         Int      @id @default(autoincrement())
+  incidentId Int
+  user       String
+  text       String   @db.Text
+  time       String
+  createdAt  DateTime @default(now())
+
+  incident Incident @relation(fields: [incidentId], references: [id], onDelete: Cascade)
+
+  @@index([incidentId])
+}
+
+model Resource {
+  id         Int            @id @default(autoincrement())
+  name       String
+  type       ResourceType
+  officers   Int
+  vehicle    String
+  status     ResourceStatus @default(AVAILABLE)
+  assignedTo Int?
+  createdAt  DateTime       @default(now())
+  updatedAt  DateTime       @updatedAt
+
+  incident Incident? @relation(fields: [assignedTo], references: [id])
+
+  @@index([status])
+  @@index([assignedTo])
+}
+
+model Province {
+  id        Int            @id @default(autoincrement())
+  name      String         @unique
+  status    ProvinceStatus @default(NORMAL)
+  count     Int            @default(0)
+  updatedAt DateTime       @updatedAt
+
+  @@index([status])
+}
+
+enum IncidentSeverity {
+  CRITICAL
+  HIGH
+  MEDIUM
+  LOW
+}
+
+enum IncidentCategory {
+  DISASTER
+  PROTEST
+  TRAFFIC
+  CRIME
+  MEDICAL
+}
+
+enum IncidentStatus {
+  ACTIVE
+  MONITORING
+  RESOLVED
+}
+
+enum ResourceType {
+  UNIT
+  VEHICLE
+  PERSONNEL
+}
+
+enum ResourceStatus {
+  DEPLOYED
+  STANDBY
+  AVAILABLE
+  UNAVAILABLE
+}
+
+enum ProvinceStatus {
+  ACTIVE
+  MONITORING
+  NORMAL
+}
